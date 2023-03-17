@@ -16,7 +16,7 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       speakeasy_version: latest
-      openapi_doc_location: https://raw.githubusercontent.com/sensible-hq/sensible-docs/main/openapi.yml
+      openapi_doc_location: ./sensible.yml
       languages: |-
         - typescript
       publish_typescript: true
