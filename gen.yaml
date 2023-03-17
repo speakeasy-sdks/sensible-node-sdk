@@ -1,4 +1,9 @@
-go:
-    version: 0.0.0
-    packagename: github.com/speakeasy-sdks/company-laguage-sdk
-sdkclassname: companyname
+configVersion: 1.0.0
+generation:
+  telemetryEnabled: false
+  sdkClassName: sensible
+  sdkFlattening: true
+typescript:
+  version: 0.4.1
+  author: sensible
+  packageName: "@speakeasy-sdks/sensible"
