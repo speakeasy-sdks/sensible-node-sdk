@@ -3,29 +3,19 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ExtractDataFromADocumentPathParams extends SpeakeasyBase {
+export class ExtractDataFromADocumentJsonRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=document_type",
   })
   documentType: string;
-}
 
-export class ExtractDataFromADocumentQueryParams extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  encodedPdf: shared.EncodedPdf;
+
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=environment",
   })
   environment?: shared.EnvironmentEnum;
-}
-
-export class ExtractDataFromADocumentJsonRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ExtractDataFromADocumentPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: ExtractDataFromADocumentQueryParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request: shared.EncodedPdf;
 }
 
 export class ExtractDataFromADocumentJsonResponse extends SpeakeasyBase {

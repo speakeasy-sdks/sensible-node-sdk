@@ -41,11 +41,7 @@ export class RetrieveExtraction {
     }
 
     const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/documents/{id}",
-      req.pathParams
-    );
+    const url: string = utils.generateURL(baseURL, "/documents/{id}", req);
 
     const client: AxiosInstance = this._securityClient!;
 

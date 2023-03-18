@@ -35,8 +35,8 @@ src/sdk/models/shared/extractionstatusenum.ts
 src/sdk/models/shared/filemetadata.ts
 src/sdk/models/shared/classification.ts
 src/sdk/models/shared/score.ts
-src/sdk/models/shared/encodedpdf.ts
 src/sdk/models/shared/environmentenum.ts
+src/sdk/models/shared/encodedpdf.ts
 src/sdk/models/shared/uploadresponse.ts
 src/sdk/models/shared/generateurlrequest.ts
 src/sdk/models/shared/webhook.ts

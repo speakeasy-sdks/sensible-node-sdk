@@ -3,29 +3,19 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Type } from "class-transformer";
 
-export class ProvideADownloadUrlPathParams extends SpeakeasyBase {
+export class ProvideADownloadUrlRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  extractFromUrlRequest?: shared.ExtractFromUrlRequest;
+
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=document_type",
   })
   documentType: string;
-}
 
-export class ProvideADownloadUrlQueryParams extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=environment",
   })
   environment?: shared.EnvironmentEnum;
-}
-
-export class ProvideADownloadUrlRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: ProvideADownloadUrlPathParams;
-
-  @SpeakeasyMetadata()
-  queryParams: ProvideADownloadUrlQueryParams;
-
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request?: shared.ExtractFromUrlRequest;
 }
 
 export class ProvideADownloadUrlResponse extends SpeakeasyBase {

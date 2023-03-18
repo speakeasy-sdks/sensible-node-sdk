@@ -1,15 +1,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-import { Type } from "class-transformer";
-
-export class GetCsvExtractionPathParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ids" })
-  ids: string;
-}
 
 export class GetCsvExtractionRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  pathParams: GetCsvExtractionPathParams;
+  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ids" })
+  ids: string;
 }
 
 export class GetCsvExtractionResponse extends SpeakeasyBase {
