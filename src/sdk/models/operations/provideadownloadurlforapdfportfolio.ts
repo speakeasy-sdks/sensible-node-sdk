@@ -3,13 +3,6 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class ProvideADownloadUrlForAPdfPortfolioQueryParams extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=environment",
-  })
-  environment?: shared.EnvironmentEnum;
-}
-
 export class ProvideADownloadUrlForAPdfPortfolioRequestBody extends SpeakeasyBase {
   @SpeakeasyMetadata()
   @Expose({ name: "document_url" })
@@ -26,11 +19,13 @@ export class ProvideADownloadUrlForAPdfPortfolioRequestBody extends SpeakeasyBas
 }
 
 export class ProvideADownloadUrlForAPdfPortfolioRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  queryParams: ProvideADownloadUrlForAPdfPortfolioQueryParams;
-
   @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  request?: ProvideADownloadUrlForAPdfPortfolioRequestBody;
+  requestBody?: ProvideADownloadUrlForAPdfPortfolioRequestBody;
+
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=environment",
+  })
+  environment?: shared.EnvironmentEnum;
 }
 
 export class ProvideADownloadUrlForAPdfPortfolioResponse extends SpeakeasyBase {
