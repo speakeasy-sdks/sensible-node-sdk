@@ -73,7 +73,7 @@ sdk.document.extractDataFromADocumentJson(req).then((res: ExtractDataFromADocume
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### document
