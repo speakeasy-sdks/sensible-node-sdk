@@ -50,7 +50,7 @@ export class GetExcelFromPDFs {
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(baseURL, "/generate_csv/{ids}", req);
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
@@ -124,7 +124,7 @@ export class GetExcelFromPDFs {
       req
     );
 
-    const client: AxiosInstance = this._securityClient!;
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const r = client.request({
       url: url,
