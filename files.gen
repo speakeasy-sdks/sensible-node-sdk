@@ -3,6 +3,7 @@ src/sdk/getexcelfrompdfs.ts
 src/sdk/portfolio.ts
 src/sdk/retrieveextraction.ts
 src/sdk/sdk.ts
+.eslintrc.yml
 jest.config.js
 package-lock.json
 package.json
