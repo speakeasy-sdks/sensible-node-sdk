@@ -17,9 +17,9 @@ const sdk = new Sensible({
 });
 
 const req: ExtractDataFromADocumentJsonRequest = {
-  documentType: "unde",
+  documentType: "corrupti",
   encodedPdf: {
-    document: "deserunt",
+    document: "provident",
   },
   environment: EnvironmentEnum.Development,
 };

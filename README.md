@@ -59,9 +59,9 @@ const sdk = new Sensible({
 });
 
 const req: ExtractDataFromADocumentJsonRequest = {
-  documentType: "unde",
+  documentType: "corrupti",
   encodedPdf: {
-    document: "deserunt",
+    document: "provident",
   },
   environment: EnvironmentEnum.Development,
 };
@@ -73,7 +73,7 @@ sdk.document.extractDataFromADocumentJson(req).then((res: ExtractDataFromADocume
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### document
