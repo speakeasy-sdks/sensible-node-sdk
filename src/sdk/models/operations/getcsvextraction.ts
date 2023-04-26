@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
+import { Expose } from "class-transformer";
 
 export class GetCsvExtractionRequest extends SpeakeasyBase {
   /**
@@ -11,6 +12,22 @@ export class GetCsvExtractionRequest extends SpeakeasyBase {
    */
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ids" })
   ids: string;
+}
+
+/**
+ * Indicates the extraction successfully converted to an CSV file. This response contains the download URL for the CSV file. The link
+ *
+ * @remarks
+ * expires after 15 minutes.
+ *
+ */
+export class GetCsvExtraction200ApplicationJSON extends SpeakeasyBase {
+  /**
+   * The download URL for the CSV file
+   */
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
+  url?: string;
 }
 
 export class GetCsvExtractionResponse extends SpeakeasyBase {
@@ -55,5 +72,5 @@ export class GetCsvExtractionResponse extends SpeakeasyBase {
    *
    */
   @SpeakeasyMetadata()
-  getCsvExtraction200ApplicationJSONAny?: any;
+  getCsvExtraction200ApplicationJSONObject?: GetCsvExtraction200ApplicationJSON;
 }

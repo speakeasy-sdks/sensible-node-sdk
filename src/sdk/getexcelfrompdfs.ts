@@ -72,7 +72,10 @@ export class GetExcelFromPDFs {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getCsvExtraction200ApplicationJSONAny = httpRes?.data;
+            res.getCsvExtraction200ApplicationJSONObject = utils.objectToClass(
+              httpRes?.data,
+              operations.GetCsvExtraction200ApplicationJSON
+            );
           }
           break;
         case httpRes?.status == 400:
@@ -146,7 +149,11 @@ export class GetExcelFromPDFs {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.getExcelExtraction200ApplicationJSONAny = httpRes?.data;
+            res.getExcelExtraction200ApplicationJSONObject =
+              utils.objectToClass(
+                httpRes?.data,
+                operations.GetExcelExtraction200ApplicationJSON
+              );
           }
           break;
         case httpRes?.status == 400:

@@ -92,7 +92,7 @@ export class Portfolio {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadPortfolioResponse = utils.deserializeJSONResponse(
+            res.uploadPortfolioResponse = utils.objectToClass(
               httpRes?.data,
               shared.UploadPortfolioResponse
             );
@@ -184,7 +184,7 @@ export class Portfolio {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractFromUrlPortfolioResponse = utils.deserializeJSONResponse(
+            res.extractFromUrlPortfolioResponse = utils.objectToClass(
               httpRes?.data,
               shared.ExtractFromUrlPortfolioResponse
             );

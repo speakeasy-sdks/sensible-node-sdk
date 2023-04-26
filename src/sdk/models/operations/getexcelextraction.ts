@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
+import { Expose } from "class-transformer";
 
 export class GetExcelExtractionRequest extends SpeakeasyBase {
   /**
@@ -11,6 +12,22 @@ export class GetExcelExtractionRequest extends SpeakeasyBase {
    */
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ids" })
   ids: string;
+}
+
+/**
+ * Indicates the extraction successfully converted to an Excel file. This response contains the download URL for the Excel file. The link
+ *
+ * @remarks
+ * expires after 15 minutes.
+ *
+ */
+export class GetExcelExtraction200ApplicationJSON extends SpeakeasyBase {
+  /**
+   * The download URL for the Excel file
+   */
+  @SpeakeasyMetadata()
+  @Expose({ name: "url" })
+  url?: string;
 }
 
 export class GetExcelExtractionResponse extends SpeakeasyBase {
@@ -55,5 +72,5 @@ export class GetExcelExtractionResponse extends SpeakeasyBase {
    *
    */
   @SpeakeasyMetadata()
-  getExcelExtraction200ApplicationJSONAny?: any;
+  getExcelExtraction200ApplicationJSONObject?: GetExcelExtraction200ApplicationJSON;
 }

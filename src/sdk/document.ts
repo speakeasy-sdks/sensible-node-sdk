@@ -125,7 +125,7 @@ export class Document {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractionSingleResponse = utils.deserializeJSONResponse(
+            res.extractionSingleResponse = utils.objectToClass(
               httpRes?.data,
               shared.ExtractionSingleResponse
             );
@@ -250,7 +250,7 @@ export class Document {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractionSingleResponse = utils.deserializeJSONResponse(
+            res.extractionSingleResponse = utils.objectToClass(
               httpRes?.data,
               shared.ExtractionSingleResponse
             );
@@ -352,7 +352,7 @@ export class Document {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadResponse = utils.deserializeJSONResponse(
+            res.uploadResponse = utils.objectToClass(
               httpRes?.data,
               shared.UploadResponse
             );
@@ -448,7 +448,7 @@ export class Document {
       switch (true) {
         case httpRes?.status == 200:
           if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractFromUrlResponse = utils.deserializeJSONResponse(
+            res.extractFromUrlResponse = utils.objectToClass(
               httpRes?.data,
               shared.ExtractFromUrlResponse
             );

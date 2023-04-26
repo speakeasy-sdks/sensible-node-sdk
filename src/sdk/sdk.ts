@@ -8,7 +8,8 @@ import { GetExcelFromPDFs } from "./getexcelfrompdfs";
 import * as shared from "./models/shared";
 import { Portfolio } from "./portfolio";
 import { RetrieveExtraction } from "./retrieveextraction";
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
+import { AxiosInstance } from "axios";
 
 /**
  * Contains the list of servers available to the SDK
@@ -63,8 +64,8 @@ export class Sensible {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.8.2";
-  private _genVersion = "2.16.5";
+  private _sdkVersion = "0.13.1";
+  private _genVersion = "2.21.1";
   private _globals: any;
 
   constructor(props?: SDKProps) {
