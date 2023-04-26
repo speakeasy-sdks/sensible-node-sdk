@@ -9,6 +9,6 @@ generation:
   sdkClassName: sensible
   singleTagPerOp: false
 typescript:
-  version: 0.13.0
+  version: 0.13.1
   author: sensible
   packageName: '@speakeasy-sdks/sensible'
