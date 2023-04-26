@@ -55,4 +55,9 @@ src/sdk/models/shared/extractioncontentportfolio.ts
 src/sdk/models/shared/classificationportfolio.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
+docs/sensible/README.md
+docs/document/README.md
+docs/getexcelfrompdfs/README.md
+docs/portfolio/README.md
+docs/retrieveextraction/README.md
 USAGE.md
