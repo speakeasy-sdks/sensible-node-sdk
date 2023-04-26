@@ -1,5 +1,11 @@
 name: Generate
 
+permissions:
+  checks: write
+  pull-requests: write
+  contents: write
+  statuses: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -16,7 +22,8 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       speakeasy_version: latest
-      openapi_doc_location: ./sensible.yml
+      openapi_docs: |
+        - ./sensible.yml
       languages: |-
         - typescript
       publish_typescript: true
