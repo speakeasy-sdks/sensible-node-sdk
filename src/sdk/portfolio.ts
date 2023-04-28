@@ -40,7 +40,7 @@ export class Portfolio {
    * @remarks
    * Use this endpoint with multiple documents that are packaged into one PDF file (a PDF "portfolio"). Segments a PDF at the specified `document_url` into the specified document types (for example, 1099, w2, and bank_statement) and then runs extractions asynchronously for each document Sensible finds in the PDF portfolio. Take the following steps. 1. Run this endpoint. 2. To retrieve the extraction results or poll status, use the extraction `id` returned in the response to call the GET documents/{id} endpoint. For more about extracting from PDF portfolios, see [Extracting from document portfolios](doc:portfolio).
    */
-  generateAnUploadUrlForAPdfPortfolio(
+  async generateAnUploadUrlForAPdfPortfolio(
     req: operations.GenerateAnUploadUrlForAPdfPortfolioRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GenerateAnUploadUrlForAPdfPortfolioResponse> {
@@ -70,7 +70,8 @@ export class Portfolio {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -78,52 +79,50 @@ export class Portfolio {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GenerateAnUploadUrlForAPdfPortfolioResponse =
-        new operations.GenerateAnUploadUrlForAPdfPortfolioResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadPortfolioResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.UploadPortfolioResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case [415, 429].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GenerateAnUploadUrlForAPdfPortfolioResponse =
+      new operations.GenerateAnUploadUrlForAPdfPortfolioResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.uploadPortfolioResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.UploadPortfolioResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case [415, 429].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -132,7 +131,7 @@ export class Portfolio {
    * @remarks
    * Use this endpoint with multiple documents that are packaged into one PDF file (a PDF "portfolio"). Segments a PDF into the specified document types (for example, 1099, w2, and bank_statement) and then runs extractions asynchronously for each document Sensible finds in the PDF portfolio.  Take the following steps - 1. Use this endpoint to generate a Sensible URL. 2. PUT the PDF you want to extract data from at the URL, where `SENSIBLE_UPLOAD_URL` is the URL you received from this endpoint's response. For example, `curl -T ./sample.pdf "SENSIBLE_UPLOAD_URL"` Note - the pre-signed upload_url does not support Base64 encoded PDFs. You PUT the PDF bytes directly to the endpoint and must omit the content-type header. 3. To retrieve the extraction or poll its status, use the extraction `id` returned in the response to call the GET documents/{id} endpoint. For more about extracting from PDF portfolios, see [Extracting from document portfolios](doc:portfolio).
    */
-  provideADownloadUrlForAPdfPortfolio(
+  async provideADownloadUrlForAPdfPortfolio(
     req: operations.ProvideADownloadUrlForAPdfPortfolioRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ProvideADownloadUrlForAPdfPortfolioResponse> {
@@ -162,7 +161,8 @@ export class Portfolio {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -170,51 +170,49 @@ export class Portfolio {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ProvideADownloadUrlForAPdfPortfolioResponse =
-        new operations.ProvideADownloadUrlForAPdfPortfolioResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractFromUrlPortfolioResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ExtractFromUrlPortfolioResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case [415, 429].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ProvideADownloadUrlForAPdfPortfolioResponse =
+      new operations.ProvideADownloadUrlForAPdfPortfolioResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.extractFromUrlPortfolioResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ExtractFromUrlPortfolioResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case [415, 429].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 }

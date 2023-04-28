@@ -39,7 +39,7 @@ export class GetExcelFromPDFs {
    * @remarks
    * You can use this endpoint to get CSV files from PDF documents. In more detail, this endpoint converts your JSON document extraction to a comma-separated values. To compile multiple PDF documents into one CSV file, specify the IDs of their recent extractions in the request separated by commas, for example, `/generate_csv/867514cc-fce7-40eb-8e9d-e6ec48cdac34,5093c65f-05bd-46a3-8df7-da3ed00f6d35`. For the best compiled spreadsheet results, configure your SenseML so that the PDFs output identically named fields. For more information about the conversion process, see [SenseML to spreadsheet reference](doc:excel-reference). This endpoint also works with JPEG, TIFF, and PNG documents. Call this endpoint after an extraction completes. For more information about checking extraction status, see the `GET /documents/{id}` endpoint.
    */
-  getCsvExtraction(
+  async getCsvExtraction(
     req: operations.GetCsvExtractionRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetCsvExtractionResponse> {
@@ -52,58 +52,57 @@ export class GetExcelFromPDFs {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetCsvExtractionResponse =
-        new operations.GetCsvExtractionResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getCsvExtraction200ApplicationJSONObject = utils.objectToClass(
-              httpRes?.data,
-              operations.GetCsvExtraction200ApplicationJSON
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 415:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetCsvExtractionResponse =
+      new operations.GetCsvExtractionResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getCsvExtraction200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetCsvExtraction200ApplicationJSON
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 415:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -112,7 +111,7 @@ export class GetExcelFromPDFs {
    * @remarks
    * You can use this endpoint to get Excel files from PDF documents. In more detail, this endpoint converts your JSON document extraction to an Excel spreadsheet. To compile multiple PDF documents into one Excel file, specify the IDs of their recent extractions in the request separated by commas, for example, `/generate_excel/867514cc-fce7-40eb-8e9d-e6ec48cdac34,5093c65f-05bd-46a3-8df7-da3ed00f6d35`. For the best compiled spreadsheet results, configure your SenseML so that the PDFs output identically named fields. For more information about the conversion process, see [SenseML to spreadsheet reference](doc:excel-reference). This endpoint also works with JPEG, TIFF, and PNG documents. Call this endpoint after an extraction completes. For more information about checking extraction status, see the `GET /documents/{id}` endpoint.
    */
-  getExcelExtraction(
+  async getExcelExtraction(
     req: operations.GetExcelExtractionRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetExcelExtractionResponse> {
@@ -129,58 +128,56 @@ export class GetExcelFromPDFs {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetExcelExtractionResponse =
-        new operations.GetExcelExtractionResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.getExcelExtraction200ApplicationJSONObject =
-              utils.objectToClass(
-                httpRes?.data,
-                operations.GetExcelExtraction200ApplicationJSON
-              );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 415:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetExcelExtractionResponse =
+      new operations.GetExcelExtractionResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.getExcelExtraction200ApplicationJSONObject = utils.objectToClass(
+            httpRes?.data,
+            operations.GetExcelExtraction200ApplicationJSON
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 415:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 }

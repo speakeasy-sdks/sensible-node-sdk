@@ -16,8 +16,7 @@ Use this endpoint in conjunction with asynchronous extraction requests to retrie
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { RetrievingResultsRequest, RetrievingResultsResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { RetrievingResultsResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
 const sdk = new Sensible({
   security: {
@@ -25,12 +24,10 @@ const sdk = new Sensible({
   },
 });
 
-const req: RetrievingResultsRequest = {
+sdk.retrieveExtraction.retrievingResults({
   id: "246a6f60-0e5b-11eb-b720-295a6fba723e",
-};
-
-sdk.retrieveExtraction.retrievingResults(req).then((res: RetrievingResultsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: RetrievingResultsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

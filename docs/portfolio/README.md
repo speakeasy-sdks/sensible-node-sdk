@@ -17,12 +17,8 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import {
-  GenerateAnUploadUrlForAPdfPortfolioRequest,
-  GenerateAnUploadUrlForAPdfPortfolioResponse,
-} from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { GenerateAnUploadUrlForAPdfPortfolioResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Sensible({
   security: {
@@ -30,7 +26,7 @@ const sdk = new Sensible({
   },
 });
 
-const req: GenerateAnUploadUrlForAPdfPortfolioRequest = {
+sdk.portfolio.generateAnUploadUrlForAPdfPortfolio({
   requestBody: {
     types: [
       "tax_returns,bank_statements,credit_reports",
@@ -41,10 +37,8 @@ const req: GenerateAnUploadUrlForAPdfPortfolioRequest = {
     },
   },
   environment: EnvironmentEnum.Development,
-};
-
-sdk.portfolio.generateAnUploadUrlForAPdfPortfolio(req).then((res: GenerateAnUploadUrlForAPdfPortfolioResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GenerateAnUploadUrlForAPdfPortfolioResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -58,12 +52,8 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import {
-  ProvideADownloadUrlForAPdfPortfolioRequest,
-  ProvideADownloadUrlForAPdfPortfolioResponse,
-} from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ProvideADownloadUrlForAPdfPortfolioResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Sensible({
   security: {
@@ -71,7 +61,7 @@ const sdk = new Sensible({
   },
 });
 
-const req: ProvideADownloadUrlForAPdfPortfolioRequest = {
+sdk.portfolio.provideADownloadUrlForAPdfPortfolio({
   requestBody: {
     documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
     types: [
@@ -84,10 +74,8 @@ const req: ProvideADownloadUrlForAPdfPortfolioRequest = {
     },
   },
   environment: EnvironmentEnum.Production,
-};
-
-sdk.portfolio.provideADownloadUrlForAPdfPortfolio(req).then((res: ProvideADownloadUrlForAPdfPortfolioResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ProvideADownloadUrlForAPdfPortfolioResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

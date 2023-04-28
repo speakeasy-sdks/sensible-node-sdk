@@ -67,7 +67,7 @@ export class Document {
    *   - Fixed Table and Table methods with the Stop parameter specified. Use the Text Table method as an alternative.
    *
    */
-  extractDataFromADocumentJson(
+  async extractDataFromADocumentJson(
     req: operations.ExtractDataFromADocumentJsonRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ExtractDataFromADocumentJsonResponse> {
@@ -103,7 +103,8 @@ export class Document {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -111,52 +112,50 @@ export class Document {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ExtractDataFromADocumentJsonResponse =
-        new operations.ExtractDataFromADocumentJsonResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractionSingleResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ExtractionSingleResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case [415, 429].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ExtractDataFromADocumentJsonResponse =
+      new operations.ExtractDataFromADocumentJsonResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.extractionSingleResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ExtractionSingleResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case [415, 429].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -192,7 +191,7 @@ export class Document {
    *   - Fixed Table and Table methods with the Stop parameter specified. Use the Text Table method as an alternative.
    *
    */
-  extractDataFromADocumentRaw(
+  async extractDataFromADocumentRaw(
     req: operations.ExtractDataFromADocumentRawRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ExtractDataFromADocumentRawResponse> {
@@ -228,7 +227,8 @@ export class Document {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -236,52 +236,50 @@ export class Document {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ExtractDataFromADocumentRawResponse =
-        new operations.ExtractDataFromADocumentRawResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractionSingleResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ExtractionSingleResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case [415, 429].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ExtractDataFromADocumentRawResponse =
+      new operations.ExtractDataFromADocumentRawResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.extractionSingleResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ExtractionSingleResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case [415, 429].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -296,7 +294,7 @@ export class Document {
    * GET documents/{id} endpoint.
    * For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extraction from a Sensible URL](https://docs.sensible.so/docs/api-tutorial-async-2).
    */
-  generateAnUploadUrl(
+  async generateAnUploadUrl(
     req: operations.GenerateAnUploadUrlRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GenerateAnUploadUrlResponse> {
@@ -330,7 +328,8 @@ export class Document {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -338,52 +337,50 @@ export class Document {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GenerateAnUploadUrlResponse =
-        new operations.GenerateAnUploadUrlResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.UploadResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case [415, 429].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GenerateAnUploadUrlResponse =
+      new operations.GenerateAnUploadUrlResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.uploadResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.UploadResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case [415, 429].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -392,7 +389,7 @@ export class Document {
    * @remarks
    * Extract data asynchronously from a document at the specified `document_url`.<br/> You must use this or other asynchronous endpoints for documents that are over 4.5MB in size or require over 30 seconds to process. Take the following steps. 1. Run this endpoint. 2. To retrieve the extraction or poll its status, use the extraction `id` returned in the response to call the GET documents/{id} endpoint. For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extraction from your URL](doc:api-tutorial-async-1).
    */
-  provideADownloadUrl(
+  async provideADownloadUrl(
     req: operations.ProvideADownloadUrlRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ProvideADownloadUrlResponse> {
@@ -426,7 +423,8 @@ export class Document {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "post",
       headers: headers,
@@ -434,51 +432,49 @@ export class Document {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ProvideADownloadUrlResponse =
-        new operations.ProvideADownloadUrlResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.extractFromUrlResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.ExtractFromUrlResponse
-            );
-          }
-          break;
-        case httpRes?.status == 400:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.badRequest = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 401:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unauthorized = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case [415, 429].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.unsupportedMediaType = JSON.stringify(httpRes?.data);
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `text/plain`)) {
-            res.sensibleEncounteredAnUnknownError = JSON.stringify(
-              httpRes?.data
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ProvideADownloadUrlResponse =
+      new operations.ProvideADownloadUrlResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.extractFromUrlResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.ExtractFromUrlResponse
+          );
+        }
+        break;
+      case httpRes?.status == 400:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.badRequest = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 401:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unauthorized = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case [415, 429].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `text/plain`)) {
+          res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+        }
+        break;
+    }
+
+    return res;
   }
 }

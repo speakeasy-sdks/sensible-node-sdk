@@ -1,9 +1,8 @@
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataFromADocumentJsonRequest, ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Sensible({
   security: {
@@ -11,16 +10,14 @@ const sdk = new Sensible({
   },
 });
 
-const req: ExtractDataFromADocumentJsonRequest = {
+sdk.document.extractDataFromADocumentJson({
   documentType: "corrupti",
   encodedPdf: {
     document: "provident",
   },
   environment: EnvironmentEnum.Development,
-};
-
-sdk.document.extractDataFromADocumentJson(req).then((res: ExtractDataFromADocumentJsonResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ExtractDataFromADocumentJsonResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
