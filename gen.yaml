@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: b58ea87c0063fae26ae2add108ccdb92
   docVersion: 0.0.0
-  speakeasyVersion: 1.26.4
-  generationVersion: 2.23.4
+  speakeasyVersion: 1.26.5
+  generationVersion: 2.23.6
 generation:
   telemetryEnabled: false
   sdkClassName: sensible
   singleTagPerOp: false
 typescript:
-  version: 0.15.1
+  version: 0.15.2
   author: sensible
   packageName: '@speakeasy-sdks/sensible'
