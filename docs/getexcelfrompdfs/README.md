@@ -21,7 +21,7 @@ import { GetCsvExtractionResponse } from "@speakeasy-sdks/sensible/dist/sdk/mode
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -46,7 +46,7 @@ import { GetExcelExtractionResponse } from "@speakeasy-sdks/sensible/dist/sdk/mo
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 

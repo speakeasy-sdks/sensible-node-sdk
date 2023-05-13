@@ -6,7 +6,7 @@ import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 

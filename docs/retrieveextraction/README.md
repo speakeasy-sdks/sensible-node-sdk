@@ -20,7 +20,7 @@ import { RetrievingResultsResponse } from "@speakeasy-sdks/sensible/dist/sdk/mod
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 

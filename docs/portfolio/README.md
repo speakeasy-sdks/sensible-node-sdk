@@ -22,7 +22,7 @@ import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -57,7 +57,7 @@ import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
