@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ExtractionStatusEnum } from "./extractionstatusenum";
+import { ExtractionStatus } from "./extractionstatus";
 import { Expose, Transform } from "class-transformer";
 
 /**
@@ -30,7 +30,7 @@ export class UploadResponse extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: ExtractionStatusEnum;
+  status?: ExtractionStatus;
 
   /**
    * Unique user-friendly name for a document type

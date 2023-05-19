@@ -53,6 +53,8 @@ export class GetExcelFromPDFs {
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] =
+      "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -135,6 +137,8 @@ export class GetExcelFromPDFs {
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] =
+      "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

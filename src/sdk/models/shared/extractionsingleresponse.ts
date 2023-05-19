@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Classification } from "./classification";
-import { ExtractionStatusEnum } from "./extractionstatusenum";
+import { ExtractionStatus } from "./extractionstatus";
 import { FileMetadata } from "./filemetadata";
 import { Validation } from "./validation";
 import { ValidationsSummary } from "./validationssummary";
@@ -99,7 +99,7 @@ export class ExtractionSingleResponse extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: ExtractionStatusEnum;
+  status?: ExtractionStatus;
 
   /**
    * Unique user-friendly name for a document type

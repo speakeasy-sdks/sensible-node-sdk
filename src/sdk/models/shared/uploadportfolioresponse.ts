@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ExtractionStatusEnum } from "./extractionstatusenum";
+import { ExtractionStatus } from "./extractionstatus";
 import { Expose, Transform } from "class-transformer";
 
 /**
@@ -30,7 +30,7 @@ export class UploadPortfolioResponse extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: ExtractionStatusEnum;
+  status?: ExtractionStatus;
 
   /**
    * URL at which to PUT the PDF bytes array for extraction. for example, curl -T ./sample.pdf "YOUR_UPLOAD_URL"

@@ -47,7 +47,7 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -60,7 +60,7 @@ sdk.document.extractDataFromADocumentJson({
   encodedPdf: {
     document: "unde",
   },
-  environment: EnvironmentEnum.Development,
+  environment: Environment.Development,
 }).then((res: ExtractDataFromADocumentJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -104,7 +104,7 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ExtractDataFromADocumentRawResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -115,7 +115,7 @@ const sdk = new Sensible({
 sdk.document.extractDataFromADocumentRaw({
   requestBody: "corrupti".encode(),
   documentType: "illum",
-  environment: EnvironmentEnum.Production,
+  environment: Environment.Production,
 }).then((res: ExtractDataFromADocumentRawResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -138,7 +138,7 @@ For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extr
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GenerateAnUploadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentTypeEnum, EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -148,14 +148,14 @@ const sdk = new Sensible({
 
 sdk.document.generateAnUploadUrl({
   generateUrlRequest: {
-    contentType: ContentTypeEnum.ImagePng,
+    contentType: ContentType.ImagePng,
     webhook: {
       payload: "info extra to the default extraction payload",
       url: "https://example.com/example_webhook_url",
     },
   },
   documentType: "deserunt",
-  environment: EnvironmentEnum.Production,
+  environment: Environment.Production,
 }).then((res: GenerateAnUploadUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -172,7 +172,7 @@ Extract data asynchronously from a document at the specified `document_url`.<br/
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ProvideADownloadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentTypeEnum, EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -182,7 +182,7 @@ const sdk = new Sensible({
 
 sdk.document.provideADownloadUrl({
   extractFromUrlRequest: {
-    contentType: ContentTypeEnum.ImageJpeg,
+    contentType: ContentType.ImageJpeg,
     documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
     webhook: {
       payload: "info extra to the default extraction payload",
@@ -190,7 +190,7 @@ sdk.document.provideADownloadUrl({
     },
   },
   documentType: "magnam",
-  environment: EnvironmentEnum.Development,
+  environment: Environment.Development,
 }).then((res: ProvideADownloadUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response

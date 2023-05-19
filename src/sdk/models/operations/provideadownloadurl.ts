@@ -31,7 +31,7 @@ export class ProvideADownloadUrlRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=environment",
   })
-  environment?: shared.EnvironmentEnum;
+  environment?: shared.Environment;
 }
 
 export class ProvideADownloadUrlResponse extends SpeakeasyBase {

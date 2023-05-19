@@ -5,7 +5,7 @@
 /**
  * Extraction status (WAITING, COMPLETE, FAILED)
  */
-export enum ExtractionStatusEnum {
+export enum ExtractionStatus {
   Waiting = "WAITING",
   Complete = "COMPLETE",
   Failed = "FAILED",

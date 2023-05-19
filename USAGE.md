@@ -2,7 +2,7 @@
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -15,7 +15,7 @@ sdk.document.extractDataFromADocumentJson({
   encodedPdf: {
     document: "provident",
   },
-  environment: EnvironmentEnum.Development,
+  environment: Environment.Development,
 }).then((res: ExtractDataFromADocumentJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response

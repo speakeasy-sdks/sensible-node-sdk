@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { DocumentInPortfolio } from "./documentinportfolio";
-import { ExtractionStatusEnum } from "./extractionstatusenum";
+import { ExtractionStatus } from "./extractionstatus";
 import { Expose, Transform, Type } from "class-transformer";
 
 export class ExtractionPortfolioRetrievalResponse extends SpeakeasyBase {
@@ -55,5 +55,5 @@ export class ExtractionPortfolioRetrievalResponse extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "status" })
-  status?: ExtractionStatusEnum;
+  status?: ExtractionStatus;
 }

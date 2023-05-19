@@ -18,7 +18,7 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GenerateAnUploadUrlForAPdfPortfolioResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -36,7 +36,7 @@ sdk.portfolio.generateAnUploadUrlForAPdfPortfolio({
       url: "https://example.com/example_webhook_url",
     },
   },
-  environment: EnvironmentEnum.Development,
+  environment: Environment.Development,
 }).then((res: GenerateAnUploadUrlForAPdfPortfolioResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -53,7 +53,7 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ProvideADownloadUrlForAPdfPortfolioResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -73,7 +73,7 @@ sdk.portfolio.provideADownloadUrlForAPdfPortfolio({
       url: "https://example.com/example_webhook_url",
     },
   },
-  environment: EnvironmentEnum.Production,
+  environment: Environment.Production,
 }).then((res: ProvideADownloadUrlForAPdfPortfolioResponse) => {
   if (res.statusCode == 200) {
     // handle response
