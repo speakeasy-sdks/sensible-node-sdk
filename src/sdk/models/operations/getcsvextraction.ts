@@ -7,11 +7,11 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class GetCsvExtractionRequest extends SpeakeasyBase {
-  /**
-   * Comma-delimited list of unique extraction IDs.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ids" })
-  ids: string;
+    /**
+     * Comma-delimited list of unique extraction IDs.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=ids" })
+    ids: string;
 }
 
 /**
@@ -22,55 +22,55 @@ export class GetCsvExtractionRequest extends SpeakeasyBase {
  *
  */
 export class GetCsvExtraction200ApplicationJSON extends SpeakeasyBase {
-  /**
-   * The download URL for the CSV file
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url?: string;
+    /**
+     * The download URL for the CSV file
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url?: string;
 }
 
 export class GetCsvExtractionResponse extends SpeakeasyBase {
-  /**
-   * Bad Request
-   */
-  @SpeakeasyMetadata()
-  badRequest?: string;
+    /**
+     * Bad Request
+     */
+    @SpeakeasyMetadata()
+    badRequest?: string;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Internal Server Error
-   */
-  @SpeakeasyMetadata()
-  sensibleEncounteredAnUnknownError?: string;
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    sensibleEncounteredAnUnknownError?: string;
 
-  /**
-   * Not authorized
-   */
-  @SpeakeasyMetadata()
-  unauthorized?: string;
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    unauthorized?: string;
 
-  /**
-   * Unsupported Media Type
-   */
-  @SpeakeasyMetadata()
-  unsupportedMediaType?: string;
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    unsupportedMediaType?: string;
 
-  /**
-   * Indicates the extraction successfully converted to an CSV file. This response contains the download URL for the CSV file. The link
-   *
-   * @remarks
-   * expires after 15 minutes.
-   *
-   */
-  @SpeakeasyMetadata()
-  getCsvExtraction200ApplicationJSONObject?: GetCsvExtraction200ApplicationJSON;
+    /**
+     * Indicates the extraction successfully converted to an CSV file. This response contains the download URL for the CSV file. The link
+     *
+     * @remarks
+     * expires after 15 minutes.
+     *
+     */
+    @SpeakeasyMetadata()
+    getCsvExtraction200ApplicationJSONObject?: GetCsvExtraction200ApplicationJSON;
 }

@@ -9,79 +9,79 @@ import { Expose, Type } from "class-transformer";
  * Normalized metadata about the PDF, returned if available.
  */
 export class FileMetadataInfo extends SpeakeasyBase {
-  /**
-   * The name of the person who created the document.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "author" })
-  author?: string;
+    /**
+     * The name of the person who created the document.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "author" })
+    author?: string;
 
-  /**
-   * File creation date
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "creation_date" })
-  creationDate?: string;
+    /**
+     * File creation date
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "creation_date" })
+    creationDate?: string;
 
-  /**
-   * If the document was converted to PDF from another format, the name of the application that created the original document from which it was converted.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "creator" })
-  creator?: string;
+    /**
+     * If the document was converted to PDF from another format, the name of the application that created the original document from which it was converted.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "creator" })
+    creator?: string;
 
-  /**
-   * Errors Sensible encountered when attempting to retrieve metadata.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "error" })
-  error?: string;
+    /**
+     * Errors Sensible encountered when attempting to retrieve metadata.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "error" })
+    error?: string;
 
-  /**
-   * File modification date
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "modification_date" })
-  modificationDate?: string;
+    /**
+     * File modification date
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "modification_date" })
+    modificationDate?: string;
 
-  /**
-   * If the document was converted to PDF from another format, the name of the application that converted it to PDF
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "producer" })
-  producer?: string;
+    /**
+     * If the document was converted to PDF from another format, the name of the application that converted it to PDF
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "producer" })
+    producer?: string;
 
-  /**
-   * Filename of the PDF.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "title" })
-  title?: string;
+    /**
+     * Filename of the PDF.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "title" })
+    title?: string;
 }
 
 /**
  * Metadata about the PDF file, for example author, authoring tool, and modified date.
  */
 export class FileMetadata extends SpeakeasyBase {
-  /**
-   * Errors Sensible encountered when attempting to retrieve metadata
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "error" })
-  error?: string;
+    /**
+     * Errors Sensible encountered when attempting to retrieve metadata
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "error" })
+    error?: string;
 
-  /**
-   * Normalized metadata about the PDF, returned if available.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "info" })
-  @Type(() => FileMetadataInfo)
-  info?: FileMetadataInfo;
+    /**
+     * Normalized metadata about the PDF, returned if available.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "info" })
+    @Type(() => FileMetadataInfo)
+    info?: FileMetadataInfo;
 
-  /**
-   * Raw metadata embedded in the PDF. Returned if available, without data normalization.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "metadata" })
-  metadata?: Record<string, any>;
+    /**
+     * Raw metadata embedded in the PDF. Returned if available, without data normalization.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "metadata" })
+    metadata?: Record<string, any>;
 }

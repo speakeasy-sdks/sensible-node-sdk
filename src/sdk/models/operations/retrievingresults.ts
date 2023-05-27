@@ -6,50 +6,50 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class RetrievingResultsRequest extends SpeakeasyBase {
-  /**
-   * Unique ID for the extraction, used to retrieve the extraction.
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    /**
+     * Unique ID for the extraction, used to retrieve the extraction.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 export class RetrievingResultsResponse extends SpeakeasyBase {
-  /**
-   * Bad Request
-   */
-  @SpeakeasyMetadata()
-  badRequest?: string;
+    /**
+     * Bad Request
+     */
+    @SpeakeasyMetadata()
+    badRequest?: string;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Internal Server Error
-   */
-  @SpeakeasyMetadata()
-  sensibleEncounteredAnUnknownError?: string;
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    sensibleEncounteredAnUnknownError?: string;
 
-  /**
-   * Not authorized
-   */
-  @SpeakeasyMetadata()
-  unauthorized?: string;
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    unauthorized?: string;
 
-  /**
-   * Unsupported Media Type
-   */
-  @SpeakeasyMetadata()
-  unsupportedMediaType?: string;
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    unsupportedMediaType?: string;
 
-  /**
-   * Returns the extraction.
-   */
-  @SpeakeasyMetadata()
-  retrievingResults200ApplicationJSONOneOf?: any;
+    /**
+     * Returns the extraction.
+     */
+    @SpeakeasyMetadata()
+    retrievingResults200ApplicationJSONOneOf?: any;
 }
