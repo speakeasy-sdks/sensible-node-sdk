@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class ExtractDataFromADocumentJsonRequest extends SpeakeasyBase {
+export class ProvideDownloadUrlRequest extends SpeakeasyBase {
     /**
      * Type of document to extract from. Create your custom type in the Sensible app (for example, `rate_confirmation`, `certificate_of_insurance`, or `home_inspection_report`).
      *
@@ -21,7 +21,7 @@ export class ExtractDataFromADocumentJsonRequest extends SpeakeasyBase {
     documentType: string;
 
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    encodedPdf: shared.EncodedPdf;
+    extractFromUrlRequest?: shared.ExtractFromUrlRequest;
 
     /**
      * If you specify `development`, extracts preferentially using config versions published to the development environment in the Sensible app. The extraction runs all configs in the doc type before picking the best fit. For each config, falls back to production version if no development version of the config exists.
@@ -30,7 +30,7 @@ export class ExtractDataFromADocumentJsonRequest extends SpeakeasyBase {
     environment?: shared.Environment;
 }
 
-export class ExtractDataFromADocumentJsonResponse extends SpeakeasyBase {
+export class ProvideDownloadUrlResponse extends SpeakeasyBase {
     /**
      * Bad Request
      */
@@ -41,13 +41,10 @@ export class ExtractDataFromADocumentJsonResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * The structured data extracted from the document.
-     *
-     * @remarks
-     *
+     * Returns the ID to use to retrieve the extraction
      */
     @SpeakeasyMetadata()
-    extractionSingleResponse?: shared.ExtractionSingleResponse;
+    extractFromUrlResponse?: shared.ExtractFromUrlResponse;
 
     /**
      * Internal Server Error
