@@ -1,4 +1,4 @@
-# getExcelFromPDFs
+# pdf
 
 ## Overview
 
@@ -25,9 +25,7 @@ const sdk = new Sensible({
   },
 });
 
-sdk.getExcelFromPDFs.getCsvExtraction({
-  ids: "246a6f60-0e5b-11eb-b720-295a6fba723e",
-}).then((res: GetCsvExtractionResponse) => {
+sdk.pdf.getCsvExtraction("246a6f60-0e5b-11eb-b720-295a6fba723e").then((res: GetCsvExtractionResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -50,9 +48,7 @@ const sdk = new Sensible({
   },
 });
 
-sdk.getExcelFromPDFs.getExcelExtraction({
-  ids: "246a6f60-0e5b-11eb-b720-295a6fba723e",
-}).then((res: GetExcelExtractionResponse) => {
+sdk.pdf.getExcelExtraction("246a6f60-0e5b-11eb-b720-295a6fba723e").then((res: GetExcelExtractionResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

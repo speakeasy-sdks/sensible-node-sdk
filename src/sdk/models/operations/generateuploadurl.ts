@@ -6,10 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class ProvideADownloadUrlRequest extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    extractFromUrlRequest?: shared.ExtractFromUrlRequest;
-
+export class GenerateUploadUrlRequest extends SpeakeasyBase {
     /**
      * Type of document to extract from. Create your custom type in the Sensible app (for example, `rate_confirmation`, `certificate_of_insurance`, or `home_inspection_report`).
      *
@@ -23,6 +20,9 @@ export class ProvideADownloadUrlRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=document_type" })
     documentType: string;
 
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    generateUrlRequest?: shared.GenerateUrlRequest;
+
     /**
      * If you specify `development`, extracts preferentially using config versions published to the development environment in the Sensible app. The extraction runs all configs in the doc type before picking the best fit. For each config, falls back to production version if no development version of the config exists.
      */
@@ -30,7 +30,7 @@ export class ProvideADownloadUrlRequest extends SpeakeasyBase {
     environment?: shared.Environment;
 }
 
-export class ProvideADownloadUrlResponse extends SpeakeasyBase {
+export class GenerateUploadUrlResponse extends SpeakeasyBase {
     /**
      * Bad Request
      */
@@ -40,23 +40,17 @@ export class ProvideADownloadUrlResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
-    /**
-     * Returns the ID to use to retrieve the extraction
-     */
     @SpeakeasyMetadata()
-    extractFromUrlResponse?: shared.ExtractFromUrlResponse;
+    statusCode: number;
+
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
     /**
      * Internal Server Error
      */
     @SpeakeasyMetadata()
     sensibleEncounteredAnUnknownError?: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
 
     /**
      * Not authorized
@@ -69,4 +63,10 @@ export class ProvideADownloadUrlResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     unsupportedMediaType?: string;
+
+    /**
+     * Returns the upload_url at which to PUT the document for extraction
+     */
+    @SpeakeasyMetadata()
+    uploadResponse?: shared.UploadResponse;
 }
