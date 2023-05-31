@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class ExtractDataFromADocumentRawRequest extends SpeakeasyBase {
+export class ExtractDataRawRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=image/tiff" })
     requestBody: Uint8Array;
 
@@ -30,7 +30,7 @@ export class ExtractDataFromADocumentRawRequest extends SpeakeasyBase {
     environment?: shared.Environment;
 }
 
-export class ExtractDataFromADocumentRawResponse extends SpeakeasyBase {
+export class ExtractDataRawResponse extends SpeakeasyBase {
     /**
      * Bad Request
      */
