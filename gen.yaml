@@ -11,5 +11,5 @@ generation:
 typescript:
   version: 0.23.1
   author: sensible
-  maxMethodParams: 0
+  maxMethodParams: 4
   packageName: '@speakeasy-sdks/sensible'
