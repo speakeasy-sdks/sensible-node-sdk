@@ -46,26 +46,23 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataFromADocumentJsonRequest, ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: ExtractDataFromADocumentJsonRequest = {
+sdk.document.extractDataFromADocumentJson({
   documentType: "quibusdam",
   encodedPdf: {
     document: "unde",
   },
-  environment: EnvironmentEnum.Development,
-};
-
-sdk.document.extractDataFromADocumentJson(req).then((res: ExtractDataFromADocumentJsonResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Development,
+}).then((res: ExtractDataFromADocumentJsonResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -106,24 +103,21 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataFromADocumentRawRequest, ExtractDataFromADocumentRawResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { ExtractDataFromADocumentRawResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: ExtractDataFromADocumentRawRequest = {
+sdk.document.extractDataFromADocumentRaw({
   requestBody: "corrupti".encode(),
   documentType: "illum",
-  environment: EnvironmentEnum.Production,
-};
-
-sdk.document.extractDataFromADocumentRaw(req).then((res: ExtractDataFromADocumentRawResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Production,
+}).then((res: ExtractDataFromADocumentRawResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -143,30 +137,27 @@ For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extr
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { GenerateAnUploadUrlRequest, GenerateAnUploadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentTypeEnum, EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { GenerateAnUploadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: GenerateAnUploadUrlRequest = {
+sdk.document.generateAnUploadUrl({
   generateUrlRequest: {
-    contentType: ContentTypeEnum.ImagePng,
+    contentType: ContentType.ImagePng,
     webhook: {
       payload: "info extra to the default extraction payload",
       url: "https://example.com/example_webhook_url",
     },
   },
   documentType: "deserunt",
-  environment: EnvironmentEnum.Production,
-};
-
-sdk.document.generateAnUploadUrl(req).then((res: GenerateAnUploadUrlResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Production,
+}).then((res: GenerateAnUploadUrlResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -180,19 +171,18 @@ Extract data asynchronously from a document at the specified `document_url`.<br/
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ProvideADownloadUrlRequest, ProvideADownloadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentTypeEnum, EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { ProvideADownloadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: ProvideADownloadUrlRequest = {
+sdk.document.provideADownloadUrl({
   extractFromUrlRequest: {
-    contentType: ContentTypeEnum.ImageJpeg,
+    contentType: ContentType.ImageJpeg,
     documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
     webhook: {
       payload: "info extra to the default extraction payload",
@@ -200,11 +190,9 @@ const req: ProvideADownloadUrlRequest = {
     },
   },
   documentType: "magnam",
-  environment: EnvironmentEnum.Development,
-};
-
-sdk.document.provideADownloadUrl(req).then((res: ProvideADownloadUrlResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Development,
+}).then((res: ProvideADownloadUrlResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

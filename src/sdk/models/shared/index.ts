@@ -4,10 +4,10 @@
 
 export * from "./classification";
 export * from "./classificationportfolio";
-export * from "./contenttypeenum";
+export * from "./contenttype";
 export * from "./documentinportfolio";
 export * from "./encodedpdf";
-export * from "./environmentenum";
+export * from "./environment";
 export * from "./extractfromurlportfolioresponse";
 export * from "./extractfromurlrequest";
 export * from "./extractfromurlresponse";
@@ -15,7 +15,7 @@ export * from "./extractioncontentportfolio";
 export * from "./extractionportfolioretrievalresponse";
 export * from "./extractionsingleresponse";
 export * from "./extractionsingleretrievalresponse";
-export * from "./extractionstatusenum";
+export * from "./extractionstatus";
 export * from "./filemetadata";
 export * from "./generateurlrequest";
 export * from "./score";

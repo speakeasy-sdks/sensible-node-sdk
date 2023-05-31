@@ -3,23 +3,23 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ContentTypeEnum } from "./contenttypeenum";
+import { ContentType } from "./contenttype";
 import { Webhook } from "./webhook";
 import { Expose, Type } from "class-transformer";
 
 export class GenerateUrlRequest extends SpeakeasyBase {
-  /**
-   * Content type of the document being presented for extraction. This field is optional, but if supplied must be presented consistently in all interactions.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "content_type" })
-  contentType?: ContentTypeEnum;
+    /**
+     * Content type of the document being presented for extraction. This field is optional, but if supplied must be presented consistently in all interactions.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "content_type" })
+    contentType?: ContentType;
 
-  /**
-   * Specifies to return extraction results to the defined webhook as soon as they're complete, so you don't have to poll for results status. Sensible also calls this webhook on error.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "webhook" })
-  @Type(() => Webhook)
-  webhook?: Webhook;
+    /**
+     * Specifies to return extraction results to the defined webhook as soon as they're complete, so you don't have to poll for results status. Sensible also calls this webhook on error.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "webhook" })
+    @Type(() => Webhook)
+    webhook?: Webhook;
 }

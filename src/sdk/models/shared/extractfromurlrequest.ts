@@ -3,30 +3,30 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ContentTypeEnum } from "./contenttypeenum";
+import { ContentType } from "./contenttype";
 import { Webhook } from "./webhook";
 import { Expose, Type } from "class-transformer";
 
 export class ExtractFromUrlRequest extends SpeakeasyBase {
-  /**
-   * Content type of the document being presented for extraction. This field is optional, but if supplied must be presented consistently in all interactions.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "content_type" })
-  contentType?: ContentTypeEnum;
+    /**
+     * Content type of the document being presented for extraction. This field is optional, but if supplied must be presented consistently in all interactions.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "content_type" })
+    contentType?: ContentType;
 
-  /**
-   * URL that responds to a GET request with the bytes of the document to be extracted. This URL must be either publicly accessible, or presigned with a security token as part of the URL path. To check if the URL meets these criteria, open the URL with a web browser. The browser must either render the document as a full-page view with no other data, or download the document, without prompting for authentication.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "document_url" })
-  documentUrl: string;
+    /**
+     * URL that responds to a GET request with the bytes of the document to be extracted. This URL must be either publicly accessible, or presigned with a security token as part of the URL path. To check if the URL meets these criteria, open the URL with a web browser. The browser must either render the document as a full-page view with no other data, or download the document, without prompting for authentication.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "document_url" })
+    documentUrl: string;
 
-  /**
-   * Specifies to return extraction results to the defined webhook as soon as they're complete, so you don't have to poll for results status. Sensible also calls this webhook on error.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "webhook" })
-  @Type(() => Webhook)
-  webhook?: Webhook;
+    /**
+     * Specifies to return extraction results to the defined webhook as soon as they're complete, so you don't have to poll for results status. Sensible also calls this webhook on error.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "webhook" })
+    @Type(() => Webhook)
+    webhook?: Webhook;
 }

@@ -17,20 +17,16 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import {
-  GenerateAnUploadUrlForAPdfPortfolioRequest,
-  GenerateAnUploadUrlForAPdfPortfolioResponse,
-} from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { GenerateAnUploadUrlForAPdfPortfolioResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: GenerateAnUploadUrlForAPdfPortfolioRequest = {
+sdk.portfolio.generateAnUploadUrlForAPdfPortfolio({
   requestBody: {
     types: [
       "tax_returns,bank_statements,credit_reports",
@@ -40,11 +36,9 @@ const req: GenerateAnUploadUrlForAPdfPortfolioRequest = {
       url: "https://example.com/example_webhook_url",
     },
   },
-  environment: EnvironmentEnum.Development,
-};
-
-sdk.portfolio.generateAnUploadUrlForAPdfPortfolio(req).then((res: GenerateAnUploadUrlForAPdfPortfolioResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Development,
+}).then((res: GenerateAnUploadUrlForAPdfPortfolioResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -58,20 +52,16 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import {
-  ProvideADownloadUrlForAPdfPortfolioRequest,
-  ProvideADownloadUrlForAPdfPortfolioResponse,
-} from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { ProvideADownloadUrlForAPdfPortfolioResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: ProvideADownloadUrlForAPdfPortfolioRequest = {
+sdk.portfolio.provideADownloadUrlForAPdfPortfolio({
   requestBody: {
     documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
     types: [
@@ -83,11 +73,9 @@ const req: ProvideADownloadUrlForAPdfPortfolioRequest = {
       url: "https://example.com/example_webhook_url",
     },
   },
-  environment: EnvironmentEnum.Production,
-};
-
-sdk.portfolio.provideADownloadUrlForAPdfPortfolio(req).then((res: ProvideADownloadUrlForAPdfPortfolioResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Production,
+}).then((res: ProvideADownloadUrlForAPdfPortfolioResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

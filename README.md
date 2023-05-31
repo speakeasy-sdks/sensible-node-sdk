@@ -43,26 +43,23 @@ curl --request POST \
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataFromADocumentJsonRequest, ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EnvironmentEnum, ExtractionStatusEnum, ValidationSeverityEnum } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
-import { AxiosError } from "axios";
+import { ExtractDataFromADocumentJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
-const req: ExtractDataFromADocumentJsonRequest = {
+sdk.document.extractDataFromADocumentJson({
   documentType: "corrupti",
   encodedPdf: {
     document: "provident",
   },
-  environment: EnvironmentEnum.Development,
-};
-
-sdk.document.extractDataFromADocumentJson(req).then((res: ExtractDataFromADocumentJsonResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+  environment: Environment.Development,
+}).then((res: ExtractDataFromADocumentJsonResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -8,31 +8,31 @@ import { Expose } from "class-transformer";
 /**
  * Severity of the failing validation (error, warning, skipped)
  */
-export enum ValidationSeverityEnum {
-  Error = "error",
-  Warning = "warning",
-  Skipped = "skipped",
+export enum ValidationSeverity {
+    Error = "error",
+    Warning = "warning",
+    Skipped = "skipped",
 }
 
 export class Validation extends SpeakeasyBase {
-  /**
-   * Description of the validation
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    /**
+     * Description of the validation
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  /**
-   * Messages about why the validation failed
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "message" })
-  message?: string;
+    /**
+     * Messages about why the validation failed
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "message" })
+    message?: string;
 
-  /**
-   * Severity of the failing validation (error, warning, skipped)
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "severity" })
-  severity?: ValidationSeverityEnum;
+    /**
+     * Severity of the failing validation (error, warning, skipped)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "severity" })
+    severity?: ValidationSeverity;
 }

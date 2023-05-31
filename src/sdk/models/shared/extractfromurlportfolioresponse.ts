@@ -3,39 +3,39 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ExtractionStatusEnum } from "./extractionstatusenum";
+import { ExtractionStatus } from "./extractionstatus";
 import { Expose, Transform } from "class-transformer";
 
 /**
  * Returns the ID to use to retrieve the extraction.
  */
 export class ExtractFromUrlPortfolioResponse extends SpeakeasyBase {
-  /**
-   * Date and time Sensible created the extraction
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  created?: Date;
+    /**
+     * Date and time Sensible created the extraction
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    created?: Date;
 
-  /**
-   * Unique ID for the extraction, used to retrieve the extraction
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    /**
+     * Unique ID for the extraction, used to retrieve the extraction
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  /**
-   * Extraction status (WAITING, COMPLETE, FAILED)
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: ExtractionStatusEnum;
+    /**
+     * Extraction status (WAITING, COMPLETE, FAILED)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: ExtractionStatus;
 
-  /**
-   * Specifies the document types contained in the PDF portfolio.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "types" })
-  types?: string[];
+    /**
+     * Specifies the document types contained in the PDF portfolio.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "types" })
+    types?: string[];
 }
