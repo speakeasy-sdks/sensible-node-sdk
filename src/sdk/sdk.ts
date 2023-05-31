@@ -4,10 +4,10 @@
 
 import * as utils from "../internal/utils";
 import { Document } from "./document";
-import { GetExcelFromPDFs } from "./getexcelfrompdfs";
 import * as shared from "./models/shared";
+import { Pdf } from "./pdf";
 import { Portfolio } from "./portfolio";
-import { RetrieveExtraction } from "./retrieveextraction";
+import { Results } from "./results";
 import axios from "axios";
 import { AxiosInstance } from "axios";
 
@@ -50,7 +50,7 @@ export class Sensible {
     /**
      * Manage your SenseML configuration
      */
-    public getExcelFromPDFs: GetExcelFromPDFs;
+    public pdf: Pdf;
     /**
      * Manage your portfolio of documents
      */
@@ -58,14 +58,14 @@ export class Sensible {
     /**
      * Retrieve an extraction
      */
-    public retrieveExtraction: RetrieveExtraction;
+    public results: Results;
 
     public _defaultClient: AxiosInstance;
     public _securityClient: AxiosInstance;
     public _serverURL: string;
     private _language = "typescript";
-    private _sdkVersion = "0.23.1";
-    private _genVersion = "2.32.7";
+    private _sdkVersion = "0.24.0";
+    private _genVersion = "2.34.2";
     private _globals: any;
 
     constructor(props?: SDKProps) {
@@ -90,7 +90,7 @@ export class Sensible {
             this._genVersion
         );
 
-        this.getExcelFromPDFs = new GetExcelFromPDFs(
+        this.pdf = new Pdf(
             this._defaultClient,
             this._securityClient,
             this._serverURL,
@@ -108,7 +108,7 @@ export class Sensible {
             this._genVersion
         );
 
-        this.retrieveExtraction = new RetrieveExtraction(
+        this.results = new Results(
             this._defaultClient,
             this._securityClient,
             this._serverURL,

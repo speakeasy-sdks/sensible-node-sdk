@@ -7,7 +7,14 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class GenerateAnUploadUrlForAPdfPortfolioRequestBody extends SpeakeasyBase {
+export class GenerateYourPortfolioUrlRequestBody extends SpeakeasyBase {
+    /**
+     * URL that responds to a GET request with the bytes of the document to be extracted. This URL must be either publicly accessible, or presigned with a security token as part of the URL path. To check if the URL meets these criteria, open the URL with a web browser. The browser must either render the document as a full-page view with no other data, or download the document, without prompting for authentication.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "document_url" })
+    documentUrl: string;
+
     /**
      * Specifies the document types contained in the PDF portfolio.
      */
@@ -24,9 +31,9 @@ export class GenerateAnUploadUrlForAPdfPortfolioRequestBody extends SpeakeasyBas
     webhook?: shared.Webhook;
 }
 
-export class GenerateAnUploadUrlForAPdfPortfolioRequest extends SpeakeasyBase {
+export class GenerateYourPortfolioUrlRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    requestBody?: GenerateAnUploadUrlForAPdfPortfolioRequestBody;
+    requestBody?: GenerateYourPortfolioUrlRequestBody;
 
     /**
      * If you specify `development`, extracts preferentially using config versions published to the development environment in the Sensible app. The extraction runs all configs in the doc type before picking the best fit. For each config, falls back to production version if no development version of the config exists.
@@ -35,7 +42,7 @@ export class GenerateAnUploadUrlForAPdfPortfolioRequest extends SpeakeasyBase {
     environment?: shared.Environment;
 }
 
-export class GenerateAnUploadUrlForAPdfPortfolioResponse extends SpeakeasyBase {
+export class GenerateYourPortfolioUrlResponse extends SpeakeasyBase {
     /**
      * Bad Request
      */
@@ -45,17 +52,23 @@ export class GenerateAnUploadUrlForAPdfPortfolioResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * Returns the ID to use to retrieve the extraction.
+     */
     @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    extractFromUrlPortfolioResponse?: shared.ExtractFromUrlPortfolioResponse;
 
     /**
      * Internal Server Error
      */
     @SpeakeasyMetadata()
     sensibleEncounteredAnUnknownError?: string;
+
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
     /**
      * Not authorized
@@ -68,10 +81,4 @@ export class GenerateAnUploadUrlForAPdfPortfolioResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     unsupportedMediaType?: string;
-
-    /**
-     * Returns the upload_url at which to PUT the document for extraction
-     */
-    @SpeakeasyMetadata()
-    uploadPortfolioResponse?: shared.UploadPortfolioResponse;
 }

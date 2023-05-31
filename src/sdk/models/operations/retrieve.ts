@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
-export class RetrievingResultsRequest extends SpeakeasyBase {
+export class RetrieveRequest extends SpeakeasyBase {
     /**
      * Unique ID for the extraction, used to retrieve the extraction.
      */
@@ -13,7 +13,7 @@ export class RetrievingResultsRequest extends SpeakeasyBase {
     id: string;
 }
 
-export class RetrievingResultsResponse extends SpeakeasyBase {
+export class RetrieveResponse extends SpeakeasyBase {
     /**
      * Bad Request
      */
@@ -51,5 +51,5 @@ export class RetrievingResultsResponse extends SpeakeasyBase {
      * Returns the extraction.
      */
     @SpeakeasyMetadata()
-    retrievingResults200ApplicationJSONOneOf?: any;
+    retrieve200ApplicationJSONOneOf?: any;
 }

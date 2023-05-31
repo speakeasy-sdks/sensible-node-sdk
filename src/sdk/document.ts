@@ -67,14 +67,17 @@ export class Document {
      *   - Fixed Table and Table methods with the Stop parameter specified. Use the Text Table method as an alternative.
      *
      */
-    async extractDataFromADocumentJson(
-        req: operations.ExtractDataFromADocumentJsonRequest,
+    async extractDataJson(
+        documentType: string,
+        encodedPdf: shared.EncodedPdf,
+        environment?: shared.Environment,
         config?: AxiosRequestConfig
-    ): Promise<operations.ExtractDataFromADocumentJsonResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.ExtractDataFromADocumentJsonRequest(req);
-        }
-
+    ): Promise<operations.ExtractDataJsonResponse> {
+        const req = new operations.ExtractDataJsonRequest({
+            documentType: documentType,
+            encodedPdf: encodedPdf,
+            environment: environment,
+        });
         const baseURL: string = this._serverURL;
         const url: string = utils.generateURL(baseURL, "/extract/{document_type}", req);
 
@@ -115,12 +118,11 @@ export class Document {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ExtractDataFromADocumentJsonResponse =
-            new operations.ExtractDataFromADocumentJsonResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes,
-            });
+        const res: operations.ExtractDataJsonResponse = new operations.ExtractDataJsonResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
@@ -188,14 +190,17 @@ export class Document {
      *   - Fixed Table and Table methods with the Stop parameter specified. Use the Text Table method as an alternative.
      *
      */
-    async extractDataFromADocumentRaw(
-        req: operations.ExtractDataFromADocumentRawRequest,
+    async extractDataRaw(
+        requestBody: Uint8Array,
+        documentType: string,
+        environment?: shared.Environment,
         config?: AxiosRequestConfig
-    ): Promise<operations.ExtractDataFromADocumentRawResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.ExtractDataFromADocumentRawRequest(req);
-        }
-
+    ): Promise<operations.ExtractDataRawResponse> {
+        const req = new operations.ExtractDataRawRequest({
+            requestBody: requestBody,
+            documentType: documentType,
+            environment: environment,
+        });
         const baseURL: string = this._serverURL;
         const url: string = utils.generateURL(baseURL, "/extract/{document_type}", req);
 
@@ -236,12 +241,11 @@ export class Document {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ExtractDataFromADocumentRawResponse =
-            new operations.ExtractDataFromADocumentRawResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes,
-            });
+        const res: operations.ExtractDataRawResponse = new operations.ExtractDataRawResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
@@ -288,14 +292,17 @@ export class Document {
      * GET documents/{id} endpoint.
      * For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extraction from a Sensible URL](https://docs.sensible.so/docs/api-tutorial-async-2).
      */
-    async generateAnUploadUrl(
-        req: operations.GenerateAnUploadUrlRequest,
+    async generateUploadUrl(
+        documentType: string,
+        generateUrlRequest?: shared.GenerateUrlRequest,
+        environment?: shared.Environment,
         config?: AxiosRequestConfig
-    ): Promise<operations.GenerateAnUploadUrlResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.GenerateAnUploadUrlRequest(req);
-        }
-
+    ): Promise<operations.GenerateUploadUrlResponse> {
+        const req = new operations.GenerateUploadUrlRequest({
+            documentType: documentType,
+            generateUrlRequest: generateUrlRequest,
+            environment: environment,
+        });
         const baseURL: string = this._serverURL;
         const url: string = utils.generateURL(baseURL, "/generate_upload_url/{document_type}", req);
 
@@ -338,12 +345,11 @@ export class Document {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.GenerateAnUploadUrlResponse =
-            new operations.GenerateAnUploadUrlResponse({
-                statusCode: httpRes.status,
-                contentType: contentType,
-                rawResponse: httpRes,
-            });
+        const res: operations.GenerateUploadUrlResponse = new operations.GenerateUploadUrlResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
@@ -381,14 +387,17 @@ export class Document {
      * @remarks
      * Extract data asynchronously from a document at the specified `document_url`.<br/> You must use this or other asynchronous endpoints for documents that are over 4.5MB in size or require over 30 seconds to process. Take the following steps. 1. Run this endpoint. 2. To retrieve the extraction or poll its status, use the extraction `id` returned in the response to call the GET documents/{id} endpoint. For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extraction from your URL](doc:api-tutorial-async-1).
      */
-    async provideADownloadUrl(
-        req: operations.ProvideADownloadUrlRequest,
+    async provideDownloadUrl(
+        documentType: string,
+        extractFromUrlRequest?: shared.ExtractFromUrlRequest,
+        environment?: shared.Environment,
         config?: AxiosRequestConfig
-    ): Promise<operations.ProvideADownloadUrlResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.ProvideADownloadUrlRequest(req);
-        }
-
+    ): Promise<operations.ProvideDownloadUrlResponse> {
+        const req = new operations.ProvideDownloadUrlRequest({
+            documentType: documentType,
+            extractFromUrlRequest: extractFromUrlRequest,
+            environment: environment,
+        });
         const baseURL: string = this._serverURL;
         const url: string = utils.generateURL(baseURL, "/extract_from_url/{document_type}", req);
 
@@ -431,8 +440,8 @@ export class Document {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ProvideADownloadUrlResponse =
-            new operations.ProvideADownloadUrlResponse({
+        const res: operations.ProvideDownloadUrlResponse =
+            new operations.ProvideDownloadUrlResponse({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,

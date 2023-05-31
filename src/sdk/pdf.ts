@@ -9,7 +9,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Manage your SenseML configuration
  */
-export class GetExcelFromPDFs {
+export class Pdf {
     _defaultClient: AxiosInstance;
     _securityClient: AxiosInstance;
     _serverURL: string;
@@ -40,13 +40,12 @@ export class GetExcelFromPDFs {
      * You can use this endpoint to get CSV files from PDF documents. In more detail, this endpoint converts your JSON document extraction to a comma-separated values. To compile multiple PDF documents into one CSV file, specify the IDs of their recent extractions in the request separated by commas, for example, `/generate_csv/867514cc-fce7-40eb-8e9d-e6ec48cdac34,5093c65f-05bd-46a3-8df7-da3ed00f6d35`. For the best compiled spreadsheet results, configure your SenseML so that the PDFs output identically named fields. For more information about the conversion process, see [SenseML to spreadsheet reference](doc:excel-reference). This endpoint also works with JPEG, TIFF, and PNG documents. Call this endpoint after an extraction completes. For more information about checking extraction status, see the `GET /documents/{id}` endpoint.
      */
     async getCsvExtraction(
-        req: operations.GetCsvExtractionRequest,
+        ids: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetCsvExtractionResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.GetCsvExtractionRequest(req);
-        }
-
+        const req = new operations.GetCsvExtractionRequest({
+            ids: ids,
+        });
         const baseURL: string = this._serverURL;
         const url: string = utils.generateURL(baseURL, "/generate_csv/{ids}", req);
 
@@ -119,13 +118,12 @@ export class GetExcelFromPDFs {
      * You can use this endpoint to get Excel files from PDF documents. In more detail, this endpoint converts your JSON document extraction to an Excel spreadsheet. To compile multiple PDF documents into one Excel file, specify the IDs of their recent extractions in the request separated by commas, for example, `/generate_excel/867514cc-fce7-40eb-8e9d-e6ec48cdac34,5093c65f-05bd-46a3-8df7-da3ed00f6d35`. For the best compiled spreadsheet results, configure your SenseML so that the PDFs output identically named fields. For more information about the conversion process, see [SenseML to spreadsheet reference](doc:excel-reference). This endpoint also works with JPEG, TIFF, and PNG documents. Call this endpoint after an extraction completes. For more information about checking extraction status, see the `GET /documents/{id}` endpoint.
      */
     async getExcelExtraction(
-        req: operations.GetExcelExtractionRequest,
+        ids: string,
         config?: AxiosRequestConfig
     ): Promise<operations.GetExcelExtractionResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.GetExcelExtractionRequest(req);
-        }
-
+        const req = new operations.GetExcelExtractionRequest({
+            ids: ids,
+        });
         const baseURL: string = this._serverURL;
         const url: string = utils.generateURL(baseURL, "/generate_excel/{ids}", req);
 
