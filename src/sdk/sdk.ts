@@ -51,8 +51,8 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "0.25.0";
-    genVersion = "2.35.3";
+    sdkVersion = "0.25.1";
+    genVersion = "2.35.9";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -60,7 +60,7 @@ export class SDKConfiguration {
 }
 
 /**
- * Extract structured data from documents with the Sensible API.
+ * Extraction: Extract structured data from documents with the Sensible API.
  */
 export class Sensible {
     /**

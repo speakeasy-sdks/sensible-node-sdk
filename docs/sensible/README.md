@@ -2,7 +2,7 @@
 
 ## Overview
 
-Extract structured data from documents with the Sensible API.
+Extraction: Extract structured data from documents with the Sensible API.
 
 ### Available Operations
 
