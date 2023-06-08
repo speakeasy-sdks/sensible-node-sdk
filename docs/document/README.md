@@ -51,7 +51,7 @@ import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sd
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -104,7 +104,7 @@ import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sd
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -134,7 +134,7 @@ import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sens
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -164,7 +164,7 @@ import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sens
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

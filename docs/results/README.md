@@ -20,7 +20,7 @@ import { RetrieveResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/opera
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
