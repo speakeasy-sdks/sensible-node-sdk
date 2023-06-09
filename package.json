@@ -1,6 +1,6 @@
 {
   "name": "@speakeasy-sdks/sensible",
-  "version": "0.26.0",
+  "version": "0.26.1",
   "author": "sensible",
   "scripts": {
     "prepare": "tsc --build"
