@@ -6,6 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Classification } from "./classification";
 import { ExtractionStatus } from "./extractionstatus";
 import { FileMetadata } from "./filemetadata";
+import { ParsedDocument } from "./parseddocument";
 import { Validation } from "./validation";
 import { ValidationsSummary } from "./validationssummary";
 import { Expose, Transform, Type } from "class-transformer";
@@ -92,7 +93,8 @@ export class ExtractionSingleResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "parsed_document" })
-    parsedDocument?: Record<string, any>;
+    @Type(() => ParsedDocument)
+    parsedDocument?: ParsedDocument;
 
     /**
      * Extraction status (WAITING, COMPLETE, FAILED)

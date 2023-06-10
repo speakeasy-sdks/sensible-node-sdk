@@ -1,0 +1,12 @@
+# FileMetadata
+
+Metadata about the PDF file, for example author, authoring tool, and modified date.
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `error`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | Errors Sensible encountered when attempting to retrieve metadata                     | Error retrieving PDF metadata: Invalid PDF structure                                 |
+| `info`                                                                               | [FileMetadataInfo](../../models/shared/filemetadatainfo.md)                          | :heavy_minus_sign:                                                                   | Normalized metadata about the PDF, returned if available.                            |                                                                                      |
+| `metadata`                                                                           | [FileMetadataMetadata](../../models/shared/filemetadatametadata.md)                  | :heavy_minus_sign:                                                                   | Raw metadata embedded in the PDF. Returned if available, without data normalization. |                                                                                      |

@@ -18,6 +18,7 @@ export * from "./extractionsingleretrievalresponse";
 export * from "./extractionstatus";
 export * from "./filemetadata";
 export * from "./generateurlrequest";
+export * from "./parseddocument";
 export * from "./score";
 export * from "./security";
 export * from "./uploadportfolioresponse";
