@@ -65,6 +65,7 @@ export class Portfolio {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -81,33 +82,34 @@ export class Portfolio {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.uploadPortfolioResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.UploadPortfolioResponse
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }
@@ -162,6 +164,7 @@ export class Portfolio {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -178,33 +181,34 @@ export class Portfolio {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.extractFromUrlPortfolioResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ExtractFromUrlPortfolioResponse
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }

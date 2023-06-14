@@ -96,6 +96,7 @@ export class Document {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -111,33 +112,34 @@ export class Document {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.extractionSingleResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ExtractionSingleResponse
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }
@@ -223,6 +225,7 @@ export class Document {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -238,33 +241,34 @@ export class Document {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.extractionSingleResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ExtractionSingleResponse
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }
@@ -331,6 +335,7 @@ export class Document {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -346,30 +351,34 @@ export class Document {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.uploadResponse = utils.objectToClass(httpRes?.data, shared.UploadResponse);
+                    res.uploadResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.UploadResponse
+                    );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }
@@ -430,6 +439,7 @@ export class Document {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -446,33 +456,34 @@ export class Document {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.extractFromUrlResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ExtractFromUrlResponse
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }

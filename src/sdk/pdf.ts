@@ -51,6 +51,7 @@ export class Pdf {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -65,33 +66,34 @@ export class Pdf {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getCsvExtraction200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.GetCsvExtraction200ApplicationJSON
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }
@@ -133,6 +135,7 @@ export class Pdf {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -148,33 +151,34 @@ export class Pdf {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getExcelExtraction200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.GetExcelExtraction200ApplicationJSON
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
                 }
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
                 }
                 break;
         }
