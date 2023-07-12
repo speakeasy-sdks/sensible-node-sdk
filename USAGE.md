@@ -6,7 +6,7 @@ import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sd
 
 const sdk = new Sensible({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

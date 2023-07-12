@@ -287,3 +287,163 @@ Based on:
 - Speakeasy CLI 1.40.2 (2.34.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v0.24.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.24.0 - .
+
+## 2023-06-02 00:53:23
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.40.3 (2.34.7) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.24.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.24.1 - .
+
+## 2023-06-03 00:51:46
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.43.0 (2.35.3) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.25.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.25.0 - .
+
+## 2023-06-07 00:55:20
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.44.2 (2.35.9) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.25.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.25.1 - .
+
+## 2023-06-08 00:52:45
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.45.0 (2.37.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.26.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.26.0 - .
+
+## 2023-06-09 00:55:09
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.45.2 (2.37.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.26.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.26.1 - .
+
+## 2023-06-10 00:49:07
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.47.0 (2.39.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.27.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.27.0 - .
+
+## 2023-06-11 00:57:35
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.47.1 (2.39.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.27.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.27.1 - .
+
+## 2023-06-14 00:52:52
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.47.3 (2.40.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.28.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.28.0 - .
+
+## 2023-06-16 00:52:03
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.48.0 (2.41.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.29.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.29.0 - .
+
+## 2023-06-20 00:49:14
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.49.0 (2.41.4) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.29.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.29.1 - .
+
+## 2023-06-21 00:51:59
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.49.1 (2.41.5) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.29.2] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.29.2 - .
+
+## 2023-06-23 00:57:29
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.50.1 (2.43.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.30.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.30.0 - .
+
+## 2023-06-27 00:58:11
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.51.1 (2.50.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.31.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.31.0 - .
+
+## 2023-06-29 00:56:16
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.51.3 (2.52.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.32.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.32.0 - .
+
+## 2023-07-01 01:02:08
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.52.0 (2.55.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.33.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.33.0 - .
+
+## 2023-07-06 00:59:30
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.52.2 (2.57.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.34.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.34.0 - .
+
+## 2023-07-07 01:00:10
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.53.0 (2.58.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.35.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.35.0 - .
+
+## 2023-07-08 00:57:50
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.53.1 (2.58.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.35.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.35.1 - .
+
+## 2023-07-11 00:52:49
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.56.0 (2.61.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.36.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.36.0 - .
+
+## 2023-07-12 00:57:41
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.56.4 (2.61.5) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.36.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.36.1 - .

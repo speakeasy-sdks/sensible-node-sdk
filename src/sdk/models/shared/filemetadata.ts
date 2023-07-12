@@ -60,6 +60,11 @@ export class FileMetadataInfo extends SpeakeasyBase {
 }
 
 /**
+ * Raw metadata embedded in the PDF. Returned if available, without data normalization.
+ */
+export class FileMetadataMetadata extends SpeakeasyBase {}
+
+/**
  * Metadata about the PDF file, for example author, authoring tool, and modified date.
  */
 export class FileMetadata extends SpeakeasyBase {
@@ -83,5 +88,6 @@ export class FileMetadata extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    metadata?: Record<string, any>;
+    @Type(() => FileMetadataMetadata)
+    metadata?: FileMetadataMetadata;
 }

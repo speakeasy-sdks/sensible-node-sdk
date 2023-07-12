@@ -5,6 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ClassificationPortfolio } from "./classificationportfolio";
 import { FileMetadata } from "./filemetadata";
+import { ParsedDocument } from "./parseddocument";
 import { Validation } from "./validation";
 import { ValidationsSummary } from "./validationssummary";
 import { Expose, Type } from "class-transformer";
@@ -55,7 +56,8 @@ export class ExtractionContentPortfolio extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "parsed_document" })
-    parsedDocument?: Record<string, any>;
+    @Type(() => ParsedDocument)
+    parsedDocument?: ParsedDocument;
 
     /**
      * Summary of the extracted fields that failed validation rules you write in the Sensible app.
