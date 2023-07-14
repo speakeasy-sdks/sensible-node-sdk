@@ -47,7 +47,7 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -115,7 +115,7 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ExtractDataRawResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -160,7 +160,7 @@ For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extr
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GenerateUploadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ContentType, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -205,7 +205,7 @@ Extract data asynchronously from a document at the specified `document_url`.<br/
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ProvideDownloadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentType, Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ContentType, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {

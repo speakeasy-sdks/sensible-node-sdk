@@ -1,8 +1,10 @@
 <!-- Start SDK Example Usage -->
+
+
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {

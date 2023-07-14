@@ -18,7 +18,7 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GenerateSensiblePortfolioUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
@@ -64,7 +64,7 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GenerateYourPortfolioUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
