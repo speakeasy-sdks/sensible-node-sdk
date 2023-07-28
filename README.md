@@ -46,18 +46,21 @@ curl --request POST \
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ExtractDataJsonRequest, ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.document.extractDataJson("corrupti", {
+const documentType: string = "corrupti";
+const encodedPdf: EncodedPdf = {
   document: "provident",
-}, Environment.Development).then((res: ExtractDataJsonResponse) => {
+};
+const environment: Environment = Environment.Development;
+
+sdk.document.extractDataJson(documentType, encodedPdf, environment).then((res: ExtractDataJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

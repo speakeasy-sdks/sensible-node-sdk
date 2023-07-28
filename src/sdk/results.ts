@@ -11,6 +11,11 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Retrieve an extraction
  */
+export enum RetrieveAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
 export class Results {
     private sdkConfiguration: SDKConfiguration;
 
@@ -24,7 +29,11 @@ export class Results {
      * @remarks
      * Use this endpoint in conjunction with asynchronous extraction requests to retrieve your results. You can also use this endpoint to retrieve the results for documents extractions from the synchronous /extract endpoint. To poll extraction status, check the `status` field in this endpoint's response. When the extraction completes, the returned status is `COMPLETE` and the response includes results in the `parsed_document` field.  For fields in the extraction for which Sensible couldn't find a value, Sensible returns null.
      */
-    async retrieve(id: string, config?: AxiosRequestConfig): Promise<operations.RetrieveResponse> {
+    async retrieve(
+        id: string,
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: RetrieveAcceptEnum
+    ): Promise<operations.RetrieveResponse> {
         const req = new operations.RetrieveRequest({
             id: id,
         });
@@ -38,8 +47,12 @@ export class Results {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

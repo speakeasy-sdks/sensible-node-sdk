@@ -46,18 +46,21 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ExtractDataJsonRequest, ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.document.extractDataJson("quibusdam", {
+const documentType: string = "quibusdam";
+const encodedPdf: EncodedPdf = {
   document: "unde",
-}, Environment.Development).then((res: ExtractDataJsonResponse) => {
+};
+const environment: Environment = Environment.Development;
+
+sdk.document.extractDataJson(documentType, encodedPdf, environment).then((res: ExtractDataJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -114,7 +117,7 @@ For TIFF documents, SenseML that attempts to return a rendered page returns an e
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataRawResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ExtractDataRawRequest, ExtractDataRawResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
@@ -122,8 +125,11 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
+const requestBody: Uint8Array = "corrupti".encode();
+const documentType: string = "illum";
+const environment: Environment = Environment.Production;
 
-sdk.document.extractDataRaw("corrupti".encode(), "illum", Environment.Production).then((res: ExtractDataRawResponse) => {
+sdk.document.extractDataRaw(requestBody, documentType, environment).then((res: ExtractDataRawResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -159,22 +165,25 @@ For a step-by-step tutorial on calling this endpoint, see [Try asynchronous extr
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { GenerateUploadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentType, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { GenerateUploadUrlRequest, GenerateUploadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ContentType, Environment, GenerateUrlRequest, Webhook } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.document.generateUploadUrl("error", {
+const documentType: string = "error";
+const generateUrlRequest: GenerateUrlRequest = {
   contentType: ContentType.ImagePng,
   webhook: {
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
-}, Environment.Production).then((res: GenerateUploadUrlResponse) => {
+};
+const environment: Environment = Environment.Production;
+
+sdk.document.generateUploadUrl(documentType, generateUrlRequest, environment).then((res: GenerateUploadUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -204,23 +213,26 @@ Extract data asynchronously from a document at the specified `document_url`.<br/
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ProvideDownloadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { ContentType, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ProvideDownloadUrlRequest, ProvideDownloadUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { ContentType, Environment, ExtractFromUrlRequest, Webhook } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.document.provideDownloadUrl("iure", {
+const documentType: string = "iure";
+const extractFromUrlRequest: ExtractFromUrlRequest = {
   contentType: ContentType.ImageJpeg,
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   webhook: {
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
-}, Environment.Development).then((res: ProvideDownloadUrlResponse) => {
+};
+const environment: Environment = Environment.Development;
+
+sdk.document.provideDownloadUrl(documentType, extractFromUrlRequest, environment).then((res: ProvideDownloadUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

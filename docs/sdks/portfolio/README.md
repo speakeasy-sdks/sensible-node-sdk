@@ -17,16 +17,19 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { GenerateSensiblePortfolioUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import {
+  GenerateSensiblePortfolioUrlRequest,
+  GenerateSensiblePortfolioUrlRequestBody,
+  GenerateSensiblePortfolioUrlResponse,
+} from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, Webhook } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.portfolio.generateSensiblePortfolioUrl({
+const requestBody: GenerateSensiblePortfolioUrlRequestBody = {
   types: [
     "tax_returns,bank_statements,credit_reports",
   ],
@@ -34,7 +37,10 @@ sdk.portfolio.generateSensiblePortfolioUrl({
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
-}, Environment.Development).then((res: GenerateSensiblePortfolioUrlResponse) => {
+};
+const environment: Environment = Environment.Development;
+
+sdk.portfolio.generateSensiblePortfolioUrl(requestBody, environment).then((res: GenerateSensiblePortfolioUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -63,16 +69,19 @@ Use this endpoint with multiple documents that are packaged into one PDF file (a
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { GenerateYourPortfolioUrlResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import {
+  GenerateYourPortfolioUrlRequest,
+  GenerateYourPortfolioUrlRequestBody,
+  GenerateYourPortfolioUrlResponse,
+} from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { Environment, Webhook } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
-
-sdk.portfolio.generateYourPortfolioUrl({
+const requestBody: GenerateYourPortfolioUrlRequestBody = {
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   types: [
     "tax_returns,bank_statements,credit_reports",
@@ -82,7 +91,10 @@ sdk.portfolio.generateYourPortfolioUrl({
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
-}, Environment.Production).then((res: GenerateYourPortfolioUrlResponse) => {
+};
+const environment: Environment = Environment.Production;
+
+sdk.portfolio.generateYourPortfolioUrl(requestBody, environment).then((res: GenerateYourPortfolioUrlResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

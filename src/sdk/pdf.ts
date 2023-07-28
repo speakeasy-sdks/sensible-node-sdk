@@ -11,6 +11,16 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Manage your SenseML configuration
  */
+export enum GetCsvExtractionAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum GetExcelExtractionAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
 export class Pdf {
     private sdkConfiguration: SDKConfiguration;
 
@@ -26,7 +36,8 @@ export class Pdf {
      */
     async getCsvExtraction(
         ids: string,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GetCsvExtractionAcceptEnum
     ): Promise<operations.GetCsvExtractionResponse> {
         const req = new operations.GetCsvExtractionRequest({
             ids: ids,
@@ -41,8 +52,12 @@ export class Pdf {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -145,7 +160,8 @@ export class Pdf {
      */
     async getExcelExtraction(
         ids: string,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GetExcelExtractionAcceptEnum
     ): Promise<operations.GetExcelExtractionResponse> {
         const req = new operations.GetExcelExtractionRequest({
             ids: ids,
@@ -160,8 +176,12 @@ export class Pdf {
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

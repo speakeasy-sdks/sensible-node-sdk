@@ -16,15 +16,16 @@ Use this endpoint in conjunction with asynchronous extraction requests to retrie
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { RetrieveResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { RetrieveRequest, RetrieveResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
 const sdk = new Sensible({
   security: {
     bearerAuth: "",
   },
 });
+const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-sdk.results.retrieve("246a6f60-0e5b-11eb-b720-295a6fba723e").then((res: RetrieveResponse) => {
+sdk.results.retrieve(id).then((res: RetrieveResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

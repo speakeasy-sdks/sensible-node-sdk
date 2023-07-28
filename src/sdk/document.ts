@@ -12,6 +12,26 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Extract data from a document
  */
+export enum ExtractDataJsonAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum ExtractDataRawAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum GenerateUploadUrlAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum ProvideDownloadUrlAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
 export class Document {
     private sdkConfiguration: SDKConfiguration;
 
@@ -56,7 +76,8 @@ export class Document {
         documentType: string,
         encodedPdf: shared.EncodedPdf,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: ExtractDataJsonAcceptEnum
     ): Promise<operations.ExtractDataJsonResponse> {
         const req = new operations.ExtractDataJsonRequest({
             documentType: documentType,
@@ -86,8 +107,12 @@ export class Document {
         const queryParams: string = utils.serializeQueryParams(req);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -220,7 +245,8 @@ export class Document {
         requestBody: Uint8Array,
         documentType: string,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: ExtractDataRawAcceptEnum
     ): Promise<operations.ExtractDataRawResponse> {
         const req = new operations.ExtractDataRawRequest({
             requestBody: requestBody,
@@ -250,8 +276,12 @@ export class Document {
         const queryParams: string = utils.serializeQueryParams(req);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -363,7 +393,8 @@ export class Document {
         documentType: string,
         generateUrlRequest?: shared.GenerateUrlRequest,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GenerateUploadUrlAcceptEnum
     ): Promise<operations.GenerateUploadUrlResponse> {
         const req = new operations.GenerateUploadUrlRequest({
             documentType: documentType,
@@ -395,8 +426,12 @@ export class Document {
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -502,7 +537,8 @@ export class Document {
         documentType: string,
         extractFromUrlRequest?: shared.ExtractFromUrlRequest,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: ProvideDownloadUrlAcceptEnum
     ): Promise<operations.ProvideDownloadUrlResponse> {
         const req = new operations.ProvideDownloadUrlRequest({
             documentType: documentType,
@@ -534,8 +570,12 @@ export class Document {
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

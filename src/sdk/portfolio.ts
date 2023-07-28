@@ -12,6 +12,16 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Manage your portfolio of documents
  */
+export enum GenerateSensiblePortfolioUrlAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export enum GenerateYourPortfolioUrlAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
 export class Portfolio {
     private sdkConfiguration: SDKConfiguration;
 
@@ -28,7 +38,8 @@ export class Portfolio {
     async generateSensiblePortfolioUrl(
         requestBody?: operations.GenerateSensiblePortfolioUrlRequestBody,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GenerateSensiblePortfolioUrlAcceptEnum
     ): Promise<operations.GenerateSensiblePortfolioUrlResponse> {
         const req = new operations.GenerateSensiblePortfolioUrlRequest({
             requestBody: requestBody,
@@ -55,8 +66,12 @@ export class Portfolio {
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -162,7 +177,8 @@ export class Portfolio {
     async generateYourPortfolioUrl(
         requestBody?: operations.GenerateYourPortfolioUrlRequestBody,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GenerateYourPortfolioUrlAcceptEnum
     ): Promise<operations.GenerateYourPortfolioUrlResponse> {
         const req = new operations.GenerateYourPortfolioUrlRequest({
             requestBody: requestBody,
@@ -189,8 +205,12 @@ export class Portfolio {
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
         headers[
             "user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
