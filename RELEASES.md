@@ -535,3 +535,11 @@ Based on:
 - Speakeasy CLI 1.68.3 (2.81.1) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v0.44.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.44.0 - .
+
+## 2023-08-08 00:44:46
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.69.1 (2.82.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v0.45.0] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.45.0 - .
