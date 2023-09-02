@@ -31,7 +31,7 @@ const sdk = new Sensible({
 });
 const requestBody: GenerateSensiblePortfolioUrlRequestBody = {
   types: [
-    "tax_returns,bank_statements,credit_reports",
+    "["tax_returns","bank_statements","credit_reports"]",
   ],
   webhook: {
     payload: "info extra to the default extraction payload",
@@ -84,8 +84,8 @@ const sdk = new Sensible({
 const requestBody: GenerateYourPortfolioUrlRequestBody = {
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   types: [
-    "tax_returns,bank_statements,credit_reports",
-    "tax_returns,bank_statements,credit_reports",
+    "["tax_returns","bank_statements","credit_reports"]",
+    "["tax_returns","bank_statements","credit_reports"]",
   ],
   webhook: {
     payload: "info extra to the default extraction payload",

@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: ebef4b39bbf5381d42a4154c3b95b0c3
   docVersion: 0.0.0
-  speakeasyVersion: 1.77.0
-  generationVersion: 2.91.2
+  speakeasyVersion: 1.77.2
+  generationVersion: 2.93.0
 generation:
   sdkClassName: sensible
   singleTagPerOp: false
@@ -11,12 +11,12 @@ generation:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 2.85.0
+    core: 2.85.2
     flattening: 2.81.1
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
 typescript:
-  version: 0.49.0
+  version: 0.49.1
   author: sensible
   maxMethodParams: 4
   packageName: '@speakeasy-sdks/sensible'
