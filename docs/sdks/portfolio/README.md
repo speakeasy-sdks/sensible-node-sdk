@@ -38,7 +38,7 @@ const requestBody: GenerateSensiblePortfolioUrlRequestBody = {
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Development;
+const environment: Environment = Environment.Production;
 
 sdk.portfolio.generateSensiblePortfolioUrl(requestBody, environment).then((res: GenerateSensiblePortfolioUrlResponse) => {
   if (res.statusCode == 200) {
@@ -85,14 +85,13 @@ const requestBody: GenerateYourPortfolioUrlRequestBody = {
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   types: [
     "["tax_returns","bank_statements","credit_reports"]",
-    "["tax_returns","bank_statements","credit_reports"]",
   ],
   webhook: {
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Production;
+const environment: Environment = Environment.Development;
 
 sdk.portfolio.generateYourPortfolioUrl(requestBody, environment).then((res: GenerateYourPortfolioUrlResponse) => {
   if (res.statusCode == 200) {

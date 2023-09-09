@@ -1,7 +1,5 @@
 # ExtractFromUrlResponse
 
-Returns the ID to use to retrieve the extraction
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # ExtractFromUrlPortfolioResponse
 
-Returns the ID to use to retrieve the extraction.
-
 
 ## Fields
 

@@ -11,12 +11,6 @@ import { Validation } from "./validation";
 import { ValidationsSummary } from "./validationssummary";
 import { Expose, Transform, Type } from "class-transformer";
 
-/**
- * The structured data extracted from the document.
- *
- * @remarks
- *
- */
 export class ExtractionSingleResponse extends SpeakeasyBase {
     /**
      * Metadata about how Sensible chose the config to use for this extraction. Sensible compares all configs in the document type, then chooses the best extraction using fingerprints, scores, or a combination of the two. When two extractions tie by score and fingerprints, Sensible chooses the first configuration in alphabetic order. For more details, see [fingerprints](https://docs.sensible.so/docs/fingerprint#notes)

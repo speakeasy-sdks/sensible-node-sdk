@@ -1,7 +1,5 @@
 # UploadPortfolioResponse
 
-Returns the upload_url at which to PUT the document for extraction
-
 
 ## Fields
 

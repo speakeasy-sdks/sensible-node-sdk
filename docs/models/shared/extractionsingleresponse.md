@@ -1,8 +1,5 @@
 # ExtractionSingleResponse
 
-The structured data extracted from the document.
-
-
 
 ## Fields
 
