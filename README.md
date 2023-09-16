@@ -72,24 +72,24 @@ sdk.document.extractDataJson(documentType, encodedPdf, environment).then((res: E
 ## Available Resources and Operations
 
 
-### [document](docs/sdks/document/README.md)
+### [Document](docs/sdks/document/README.md)
 
 * [extractDataJson](docs/sdks/document/README.md#extractdatajson) - Extract data from a document
 * [extractDataRaw](docs/sdks/document/README.md#extractdataraw) - Extract data from a document
 * [generateUploadUrl](docs/sdks/document/README.md#generateuploadurl) - Extract doc at a Sensible URL
 * [provideDownloadUrl](docs/sdks/document/README.md#providedownloadurl) - Extract doc at your URL
 
-### [pdf](docs/sdks/pdf/README.md)
+### [Pdf](docs/sdks/pdf/README.md)
 
 * [getCsvExtraction](docs/sdks/pdf/README.md#getcsvextraction) - Get CSV extraction
 * [getExcelExtraction](docs/sdks/pdf/README.md#getexcelextraction) - Get Excel extraction
 
-### [portfolio](docs/sdks/portfolio/README.md)
+### [Portfolio](docs/sdks/portfolio/README.md)
 
 * [generateSensiblePortfolioUrl](docs/sdks/portfolio/README.md#generatesensibleportfoliourl) - Extract portfolio at a Sensible URL
 * [generateYourPortfolioUrl](docs/sdks/portfolio/README.md#generateyourportfoliourl) - Extract portfolio at your URL
 
-### [results](docs/sdks/results/README.md)
+### [Results](docs/sdks/results/README.md)
 
 * [retrieve](docs/sdks/results/README.md#retrieve) - Retrieve extraction
 <!-- End SDK Available Operations -->
