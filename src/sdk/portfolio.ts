@@ -51,7 +51,7 @@ export class Portfolio {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/generate_upload_url";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
@@ -195,7 +195,7 @@ export class Portfolio {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/extract_from_url";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
