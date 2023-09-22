@@ -58,11 +58,6 @@ src/sdk/models/shared/classificationportfolio.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/errors/index.ts
-docs/sdks/sensible/README.md
-docs/sdks/document/README.md
-docs/sdks/pdf/README.md
-docs/sdks/portfolio/README.md
-docs/sdks/results/README.md
 USAGE.md
 docs/models/operations/extractdatajsonrequest.md
 docs/models/operations/extractdatajsonresponse.md
@@ -113,4 +108,9 @@ docs/models/shared/documentinportfolio.md
 docs/models/shared/extractioncontentportfolio.md
 docs/models/shared/classificationportfolio.md
 docs/models/shared/security.md
+docs/sdks/sensible/README.md
+docs/sdks/document/README.md
+docs/sdks/pdf/README.md
+docs/sdks/portfolio/README.md
+docs/sdks/results/README.md
 .gitattributes

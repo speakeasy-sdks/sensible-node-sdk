@@ -54,11 +54,11 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "quibusdam";
+const documentType: string = "corrupti";
 const encodedPdf: EncodedPdf = {
-  document: "unde",
+  document: "illum",
 };
-const environment: Environment = Environment.Development;
+const environment: Environment = Environment.Production;
 
 sdk.document.extractDataJson(documentType, encodedPdf, environment).then((res: ExtractDataJsonResponse) => {
   if (res.statusCode == 200) {
@@ -125,8 +125,8 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const requestBody: Uint8Array = "corrupti".encode();
-const documentType: string = "illum";
+const requestBody: Uint8Array = "error".encode();
+const documentType: string = "deserunt";
 const environment: Environment = Environment.Production;
 
 sdk.document.extractDataRaw(requestBody, documentType, environment).then((res: ExtractDataRawResponse) => {
@@ -173,15 +173,15 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "error";
+const documentType: string = "iure";
 const generateUrlRequest: GenerateUrlRequest = {
-  contentType: ContentType.ImagePng,
+  contentType: ContentType.ImageJpeg,
   webhook: {
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Production;
+const environment: Environment = Environment.Development;
 
 sdk.document.generateUploadUrl(documentType, generateUrlRequest, environment).then((res: GenerateUploadUrlResponse) => {
   if (res.statusCode == 200) {
@@ -221,16 +221,16 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "iure";
+const documentType: string = "ipsa";
 const extractFromUrlRequest: ExtractFromUrlRequest = {
-  contentType: ContentType.ImageJpeg,
+  contentType: ContentType.ImageTiff,
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   webhook: {
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Development;
+const environment: Environment = Environment.Production;
 
 sdk.document.provideDownloadUrl(documentType, extractFromUrlRequest, environment).then((res: ProvideDownloadUrlResponse) => {
   if (res.statusCode == 200) {

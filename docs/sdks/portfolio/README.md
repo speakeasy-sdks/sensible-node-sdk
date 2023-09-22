@@ -91,7 +91,7 @@ const requestBody: GenerateYourPortfolioUrlRequestBody = {
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Development;
+const environment: Environment = Environment.Production;
 
 sdk.portfolio.generateYourPortfolioUrl(requestBody, environment).then((res: GenerateYourPortfolioUrlResponse) => {
   if (res.statusCode == 200) {
