@@ -11,11 +11,11 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "corrupti";
+const documentType: string = "Greenland";
 const encodedPdf: EncodedPdf = {
-  document: "provident",
+  document: "unless Account Central",
 };
-const environment: Environment = Environment.Development;
+const environment: Environment = Environment.Production;
 
 sdk.document.extractDataJson(documentType, encodedPdf, environment).then((res: ExtractDataJsonResponse) => {
   if (res.statusCode == 200) {

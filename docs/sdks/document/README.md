@@ -55,9 +55,9 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "corrupti";
+const documentType: string = "Greenland";
 const encodedPdf: EncodedPdf = {
-  document: "illum",
+  document: "unless Account Central",
 };
 const environment: Environment = Environment.Production;
 
@@ -126,9 +126,9 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const requestBody: Uint8Array = "error".encode();
-const documentType: string = "deserunt";
-const environment: Environment = Environment.Production;
+const requestBody: Uint8Array = "w\"7)qf*Zeg" as bytes <<<>>>;
+const documentType: string = "lime";
+const environment: Environment = Environment.Development;
 
 sdk.document.extractDataRaw(requestBody, documentType, environment).then((res: ExtractDataRawResponse) => {
   if (res.statusCode == 200) {
@@ -174,7 +174,7 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "iure";
+const documentType: string = "Factors";
 const generateUrlRequest: GenerateUrlRequest = {
   contentType: ContentType.ImageJpeg,
   webhook: {
@@ -222,9 +222,9 @@ const sdk = new Sensible({
     bearerAuth: "",
   },
 });
-const documentType: string = "ipsa";
+const documentType: string = "Electric";
 const extractFromUrlRequest: ExtractFromUrlRequest = {
-  contentType: ContentType.ImageTiff,
+  contentType: ContentType.ImageJpeg,
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   webhook: {
     payload: "info extra to the default extraction payload",
