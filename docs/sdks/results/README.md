@@ -17,20 +17,22 @@ Use this endpoint in conjunction with asynchronous extraction requests to retrie
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { RetrieveRequest, RetrieveResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-const sdk = new Sensible({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Sensible({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-sdk.results.retrieve(id).then((res: RetrieveResponse) => {
+  const res = await sdk.results.retrieve(id);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

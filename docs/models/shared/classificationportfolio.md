@@ -1,9 +1,0 @@
-# ClassificationPortfolio
-
-
-## Fields
-
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `configuration`                                                                             | *string*                                                                                    | :heavy_minus_sign:                                                                          | Name of the "configuration",  a collection of SenseML queries for extracting document data. | config_for_x_company                                                                        |
-| `score`                                                                                     | [Score](../../models/shared/score.md)                                                       | :heavy_minus_sign:                                                                          | The score for the extraction, used to help choose the best extraction.                      |                                                                                             |

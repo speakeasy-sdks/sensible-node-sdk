@@ -18,20 +18,22 @@ You can use this endpoint to get CSV files from PDF documents. In more detail, t
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { GetCsvExtractionRequest, GetCsvExtractionResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { GetCsvExtractionRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-const sdk = new Sensible({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Sensible({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-sdk.pdf.getCsvExtraction(ids).then((res: GetCsvExtractionResponse) => {
+  const res = await sdk.pdf.getCsvExtraction(ids);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -55,20 +57,22 @@ You can use this endpoint to get Excel files from PDF documents. In more detail,
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { GetExcelExtractionRequest, GetExcelExtractionResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { GetExcelExtractionRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-const sdk = new Sensible({
-  security: {
-    bearerAuth: "",
-  },
-});
+(async() => {
+  const sdk = new Sensible({
+    security: {
+      bearerAuth: "",
+    },
+  });
 const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-sdk.pdf.getExcelExtraction(ids).then((res: GetExcelExtractionResponse) => {
+  const res = await sdk.pdf.getExcelExtraction(ids);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

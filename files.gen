@@ -50,11 +50,6 @@ src/sdk/models/shared/extractfromurlresponse.ts
 src/sdk/models/shared/extractfromurlrequest.ts
 src/sdk/models/shared/uploadportfolioresponse.ts
 src/sdk/models/shared/extractfromurlportfolioresponse.ts
-src/sdk/models/shared/extractionsingleretrievalresponse.ts
-src/sdk/models/shared/extractionportfolioretrievalresponse.ts
-src/sdk/models/shared/documentinportfolio.ts
-src/sdk/models/shared/extractioncontentportfolio.ts
-src/sdk/models/shared/classificationportfolio.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/errors/index.ts
@@ -102,11 +97,6 @@ docs/models/shared/extractfromurlresponse.md
 docs/models/shared/extractfromurlrequest.md
 docs/models/shared/uploadportfolioresponse.md
 docs/models/shared/extractfromurlportfolioresponse.md
-docs/models/shared/extractionsingleretrievalresponse.md
-docs/models/shared/extractionportfolioretrievalresponse.md
-docs/models/shared/documentinportfolio.md
-docs/models/shared/extractioncontentportfolio.md
-docs/models/shared/classificationportfolio.md
 docs/models/shared/security.md
 docs/sdks/sensible/README.md
 docs/sdks/document/README.md
