@@ -56,9 +56,9 @@ import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/model
       bearerAuth: "",
     },
   });
-const documentType: string = "Greenland";
+const documentType: string = "string";
 const encodedPdf: EncodedPdf = {
-  document: "unless Account Central",
+  document: "string",
 };
 const environment: Environment = Environment.Production;
 
@@ -130,7 +130,7 @@ import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
     },
   });
 const requestBody: Uint8Array = "w\"7)qf*Zeg" as bytes <<<>>>;
-const documentType: string = "lime";
+const documentType: string = "string";
 const environment: Environment = Environment.Development;
 
   const res = await sdk.document.extractDataRaw(requestBody, documentType, environment);
@@ -179,14 +179,14 @@ import { ContentType, Environment, GenerateUrlRequest, Webhook } from "@speakeas
       bearerAuth: "",
     },
   });
-const documentType: string = "Factors";
+const documentType: string = "string";
 const generateUrlRequest: GenerateUrlRequest = {
   webhook: {
     payload: "info extra to the default extraction payload",
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Production;
+const environment: Environment = Environment.Development;
 
   const res = await sdk.document.generateUploadUrl(documentType, generateUrlRequest, environment);
 
@@ -228,7 +228,7 @@ import { ContentType, Environment, ExtractFromUrlRequest, Webhook } from "@speak
       bearerAuth: "",
     },
   });
-const documentType: string = "Electric";
+const documentType: string = "string";
 const extractFromUrlRequest: ExtractFromUrlRequest = {
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   webhook: {
@@ -236,7 +236,7 @@ const extractFromUrlRequest: ExtractFromUrlRequest = {
     url: "https://example.com/example_webhook_url",
   },
 };
-const environment: Environment = Environment.Production;
+const environment: Environment = Environment.Development;
 
   const res = await sdk.document.provideDownloadUrl(documentType, extractFromUrlRequest, environment);
 

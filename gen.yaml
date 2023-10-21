@@ -2,22 +2,26 @@ configVersion: 1.0.0
 management:
   docChecksum: ebef4b39bbf5381d42a4154c3b95b0c3
   docVersion: 0.0.0
-  speakeasyVersion: 1.96.1
-  generationVersion: 2.150.0
+  speakeasyVersion: 1.104.0
+  generationVersion: 2.169.0
 generation:
+  repoURL: https://github.com/speakeasy-sdks/sensible-node-sdk.git
   sdkClassName: sensible
   singleTagPerOp: false
   telemetryEnabled: false
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 2.90.4
+    core: 2.93.0
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 0.54.0
+  version: 0.55.0
   author: sensible
   flattenGlobalSecurity: false
+  installationURL: https://github.com/speakeasy-sdks/sensible-node-sdk
   maxMethodParams: 4
   packageName: '@speakeasy-sdks/sensible'
+  published: true
+  repoSubDirectory: .
