@@ -25,22 +25,46 @@ export const ServerList = [
  * The available configuration options for the SDK
  */
 export type SDKProps = {
-    /**
-     * The security details required to authenticate the SDK
-     */
-    security?: shared.Security;
+    bearerAuth?: string;
+
     /**
      * Allows overriding the default axios client used by the SDK
      */
     defaultClient?: AxiosInstance;
+
+    /**
+     * Allows overriding the default server used by the SDK
+     */
+    serverIdx?: number;
+
     /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
+    /**
+     * Allows overriding the default retry config used by the SDK
+     */
+    retryConfig?: utils.RetryConfig;
 };
 
+export class SDKConfiguration {
+    defaultClient: AxiosInstance;
+    security?: shared.Security | (() => Promise<shared.Security>);
+    serverURL: string;
+    serverDefaults: any;
+    language = "typescript";
+    openapiDocVersion = "0.0.0";
+    sdkVersion = "0.25.0";
+    genVersion = "2.173.0";
+    userAgent = "speakeasy-sdk/typescript 0.25.0 2.173.0 0.0.0 @speakeasy-sdks/sensible";
+    retryConfig?: utils.RetryConfig;
+    public constructor(init?: Partial<SDKConfiguration>) {
+        Object.assign(this, init);
+    }
+}
+
 /**
- * Extract structured data from documents with the Sensible API.
+ * Extraction: Extract structured data from documents with the Sensible API.
  */
 export class Sensible {
     /**
@@ -60,61 +84,28 @@ export class Sensible {
      */
     public results: Results;
 
-    public _defaultClient: AxiosInstance;
-    public _securityClient: AxiosInstance;
-    public _serverURL: string;
-    private _language = "typescript";
-    private _sdkVersion = "0.24.0";
-    private _genVersion = "2.34.2";
-    private _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
     constructor(props?: SDKProps) {
-        this._serverURL = props?.serverURL ?? ServerList[0];
+        let serverURL = props?.serverURL;
+        const serverIdx = props?.serverIdx ?? 0;
 
-        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-        if (props?.security) {
-            let security: shared.Security = props.security;
-            if (!(props.security instanceof utils.SpeakeasyBase))
-                security = new shared.Security(props.security);
-            this._securityClient = utils.createSecurityClient(this._defaultClient, security);
-        } else {
-            this._securityClient = this._defaultClient;
+        if (!serverURL) {
+            serverURL = ServerList[serverIdx];
         }
 
-        this.document = new Document(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        this.sdkConfiguration = new SDKConfiguration({
+            defaultClient: defaultClient,
+            security: new shared.Security({ bearerAuth: props?.bearerAuth }),
 
-        this.pdf = new Pdf(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+            serverURL: serverURL,
+            retryConfig: props?.retryConfig,
+        });
 
-        this.portfolio = new Portfolio(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.results = new Results(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        this.document = new Document(this.sdkConfiguration);
+        this.pdf = new Pdf(this.sdkConfiguration);
+        this.portfolio = new Portfolio(this.sdkConfiguration);
+        this.results = new Results(this.sdkConfiguration);
     }
 }

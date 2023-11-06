@@ -3,35 +3,30 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { SDKConfiguration } from "./sdk";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 /**
  * Manage your portfolio of documents
  */
-export class Portfolio {
-    _defaultClient: AxiosInstance;
-    _securityClient: AxiosInstance;
-    _serverURL: string;
-    _language: string;
-    _sdkVersion: string;
-    _genVersion: string;
+export enum GenerateSensiblePortfolioUrlAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
 
-    constructor(
-        defaultClient: AxiosInstance,
-        securityClient: AxiosInstance,
-        serverURL: string,
-        language: string,
-        sdkVersion: string,
-        genVersion: string
-    ) {
-        this._defaultClient = defaultClient;
-        this._securityClient = securityClient;
-        this._serverURL = serverURL;
-        this._language = language;
-        this._sdkVersion = sdkVersion;
-        this._genVersion = genVersion;
+export enum GenerateYourPortfolioUrlAcceptEnum {
+    applicationJson = "application/json",
+    textPlain = "text/plain",
+}
+
+export class Portfolio {
+    private sdkConfiguration: SDKConfiguration;
+
+    constructor(sdkConfig: SDKConfiguration) {
+        this.sdkConfiguration = sdkConfig;
     }
 
     /**
@@ -43,16 +38,20 @@ export class Portfolio {
     async generateSensiblePortfolioUrl(
         requestBody?: operations.GenerateSensiblePortfolioUrlRequestBody,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GenerateSensiblePortfolioUrlAcceptEnum
     ): Promise<operations.GenerateSensiblePortfolioUrlResponse> {
         const req = new operations.GenerateSensiblePortfolioUrlRequest({
             requestBody: requestBody,
             environment: environment,
         });
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/generate_upload_url";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
@@ -61,22 +60,35 @@ export class Portfolio {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -93,33 +105,69 @@ export class Portfolio {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.uploadPortfolioResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.UploadPortfolioResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -136,16 +184,20 @@ export class Portfolio {
     async generateYourPortfolioUrl(
         requestBody?: operations.GenerateYourPortfolioUrlRequestBody,
         environment?: shared.Environment,
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig,
+        acceptHeaderOverride?: GenerateYourPortfolioUrlAcceptEnum
     ): Promise<operations.GenerateYourPortfolioUrlResponse> {
         const req = new operations.GenerateYourPortfolioUrlRequest({
             requestBody: requestBody,
             environment: environment,
         });
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/extract_from_url";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
@@ -154,22 +206,35 @@ export class Portfolio {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
         const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] =
-            "application/json;q=1, text/plain;q=0.8, text/plain;q=0.6, text/plain;q=0.4, text/plain;q=0";
-        headers[
-            "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        if (acceptHeaderOverride !== undefined) {
+            headers["Accept"] = acceptHeaderOverride.toString();
+        } else {
+            headers["Accept"] = "application/json;q=1, text/plain;q=0";
+        }
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -186,33 +251,69 @@ export class Portfolio {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.extractFromUrlPortfolioResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ExtractFromUrlPortfolioResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = JSON.stringify(httpRes?.data);
+                    res.badRequest = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = JSON.stringify(httpRes?.data);
+                    res.unauthorized = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case [415, 429].includes(httpRes?.status):
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = JSON.stringify(httpRes?.data);
+                    res.unsupportedMediaType = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = JSON.stringify(httpRes?.data);
+                    res.sensibleEncounteredAnUnknownError = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }

@@ -1,21 +1,27 @@
 <!-- Start SDK Example Usage -->
+
+
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
-const sdk = new Sensible({
-  security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
-  },
-});
+(async () => {
+    const sdk = new Sensible({
+        bearerAuth: "",
+    });
+    const documentType: string = "string";
+    const encodedPdf: EncodedPdf = {
+        document: "string",
+    };
+    const environment: Environment = Environment.Production;
 
-sdk.document.extractDataJson("corrupti", {
-  document: "provident",
-}, Environment.Development).then((res: ExtractDataJsonResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
 ```
 <!-- End SDK Example Usage -->

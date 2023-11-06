@@ -44,22 +44,26 @@ curl --request POST \
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
 
-const sdk = new Sensible({
-  security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
-  },
-});
+(async () => {
+    const sdk = new Sensible({
+        bearerAuth: "",
+    });
+    const documentType: string = "string";
+    const encodedPdf: EncodedPdf = {
+        document: "string",
+    };
+    const environment: Environment = Environment.Production;
 
-sdk.document.extractDataJson("corrupti", {
-  document: "provident",
-}, Environment.Development).then((res: ExtractDataJsonResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -67,26 +71,146 @@ sdk.document.extractDataJson("corrupti", {
 ## Available Resources and Operations
 
 
-### [document](docs/document/README.md)
+### [document](docs/sdks/document/README.md)
 
-* [extractDataJson](docs/document/README.md#extractdatajson) - Extract data from a document
-* [extractDataRaw](docs/document/README.md#extractdataraw) - Extract data from a document
-* [generateUploadUrl](docs/document/README.md#generateuploadurl) - Extract doc at a Sensible URL
-* [provideDownloadUrl](docs/document/README.md#providedownloadurl) - Extract doc at your URL
+* [extractDataJson](docs/sdks/document/README.md#extractdatajson) - Extract data from a document
+* [extractDataRaw](docs/sdks/document/README.md#extractdataraw) - Extract data from a document
+* [generateUploadUrl](docs/sdks/document/README.md#generateuploadurl) - Extract doc at a Sensible URL
+* [provideDownloadUrl](docs/sdks/document/README.md#providedownloadurl) - Extract doc at your URL
 
-### [pdf](docs/pdf/README.md)
+### [pdf](docs/sdks/pdf/README.md)
 
-* [getCsvExtraction](docs/pdf/README.md#getcsvextraction) - Get CSV extraction
-* [getExcelExtraction](docs/pdf/README.md#getexcelextraction) - Get Excel extraction
+* [getCsvExtraction](docs/sdks/pdf/README.md#getcsvextraction) - Get CSV extraction
+* [getExcelExtraction](docs/sdks/pdf/README.md#getexcelextraction) - Get Excel extraction
 
-### [portfolio](docs/portfolio/README.md)
+### [portfolio](docs/sdks/portfolio/README.md)
 
-* [generateSensiblePortfolioUrl](docs/portfolio/README.md#generatesensibleportfoliourl) - Extract portfolio at a Sensible URL
-* [generateYourPortfolioUrl](docs/portfolio/README.md#generateyourportfoliourl) - Extract portfolio at your URL
+* [generateSensiblePortfolioUrl](docs/sdks/portfolio/README.md#generatesensibleportfoliourl) - Extract portfolio at a Sensible URL
+* [generateYourPortfolioUrl](docs/sdks/portfolio/README.md#generateyourportfoliourl) - Extract portfolio at your URL
 
-### [results](docs/results/README.md)
+### [results](docs/sdks/results/README.md)
 
-* [retrieve](docs/results/README.md#retrieve) - Retrieve extraction
+* [retrieve](docs/sdks/results/README.md#retrieve) - Retrieve extraction
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.sensible.so/v0` | None |
+
+For example:
+
+
+```typescript
+import { Sensible } from "@speakeasy-sdks/sensible";
+import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+
+(async () => {
+    const sdk = new Sensible({
+        bearerAuth: "",
+        serverIdx: 0,
+    });
+    const documentType: string = "string";
+    const encodedPdf: EncodedPdf = {
+        document: "string",
+    };
+    const environment: Environment = Environment.Production;
+
+    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```typescript
+import { Sensible } from "@speakeasy-sdks/sensible";
+import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+
+(async () => {
+    const sdk = new Sensible({
+        bearerAuth: "",
+        serverURL: "https://api.sensible.so/v0",
+    });
+    const documentType: string = "string";
+    const encodedPdf: EncodedPdf = {
+        document: "string",
+    };
+    const environment: Environment = Environment.Production;
+
+    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```typescript
+from @speakeasy-sdks/sensible import Sensible;
+import axios;
+
+const httpClient = axios.create({
+    headers: {'x-custom-header': 'someValue'}
+})
+
+
+const sdk = new Sensible({defaultClient: httpClient});
+```
+
+
+<!-- End Custom HTTP Client -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
