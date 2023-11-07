@@ -1,5 +1,5 @@
 # Portfolio
-(*portfolio*)
+(*.portfolio*)
 
 ## Overview
 

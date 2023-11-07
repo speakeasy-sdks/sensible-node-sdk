@@ -1,5 +1,5 @@
 # Pdf
-(*pdf*)
+(*.pdf*)
 
 ## Overview
 

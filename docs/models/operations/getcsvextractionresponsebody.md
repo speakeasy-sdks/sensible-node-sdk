@@ -1,4 +1,4 @@
-# GetCsvExtraction200ApplicationJSON
+# GetCsvExtractionResponseBody
 
 Indicates the extraction successfully converted to an CSV file. This response contains the download URL for the CSV file. The link
 expires after 15 minutes.

@@ -44,20 +44,15 @@ curl --request POST \
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
 (async () => {
     const sdk = new Sensible({
         bearerAuth: "",
     });
-    const documentType: string = "string";
-    const encodedPdf: EncodedPdf = {
-        document: "string",
-    };
-    const environment: Environment = Environment.Production;
+    const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+    const res = await sdk.results.retrieve(id);
 
     if (res.statusCode == 200) {
         // handle response
@@ -71,33 +66,31 @@ import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/model
 ## Available Resources and Operations
 
 
-### [document](docs/sdks/document/README.md)
+### [.results](docs/sdks/results/README.md)
+
+* [retrieve](docs/sdks/results/README.md#retrieve) - Retrieve extraction
+
+### [.document](docs/sdks/document/README.md)
 
 * [extractDataJson](docs/sdks/document/README.md#extractdatajson) - Extract data from a document
 * [extractDataRaw](docs/sdks/document/README.md#extractdataraw) - Extract data from a document
 * [generateUploadUrl](docs/sdks/document/README.md#generateuploadurl) - Extract doc at a Sensible URL
 * [provideDownloadUrl](docs/sdks/document/README.md#providedownloadurl) - Extract doc at your URL
 
-### [pdf](docs/sdks/pdf/README.md)
-
-* [getCsvExtraction](docs/sdks/pdf/README.md#getcsvextraction) - Get CSV extraction
-* [getExcelExtraction](docs/sdks/pdf/README.md#getexcelextraction) - Get Excel extraction
-
-### [portfolio](docs/sdks/portfolio/README.md)
+### [.portfolio](docs/sdks/portfolio/README.md)
 
 * [generateSensiblePortfolioUrl](docs/sdks/portfolio/README.md#generatesensibleportfoliourl) - Extract portfolio at a Sensible URL
 * [generateYourPortfolioUrl](docs/sdks/portfolio/README.md#generateyourportfoliourl) - Extract portfolio at your URL
 
-### [results](docs/sdks/results/README.md)
+### [.pdf](docs/sdks/pdf/README.md)
 
-* [retrieve](docs/sdks/results/README.md#retrieve) - Retrieve extraction
+* [getCsvExtraction](docs/sdks/pdf/README.md#getcsvextraction) - Get CSV extraction
+* [getExcelExtraction](docs/sdks/pdf/README.md#getexcelextraction) - Get Excel extraction
 <!-- End SDK Available Operations -->
 
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -107,8 +100,6 @@ import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/model
 # Error Handling
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-
 <!-- End Error Handling -->
 
 
@@ -126,24 +117,18 @@ You can override the default server globally by passing a server index to the `s
 
 For example:
 
-
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
 (async () => {
     const sdk = new Sensible({
-        bearerAuth: "",
         serverIdx: 0,
+        bearerAuth: "",
     });
-    const documentType: string = "string";
-    const encodedPdf: EncodedPdf = {
-        document: "string",
-    };
-    const environment: Environment = Environment.Production;
+    const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+    const res = await sdk.results.retrieve(id);
 
     if (res.statusCode == 200) {
         // handle response
@@ -157,24 +142,18 @@ import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/model
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { EncodedPdf, Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
 (async () => {
     const sdk = new Sensible({
-        bearerAuth: "",
         serverURL: "https://api.sensible.so/v0",
+        bearerAuth: "",
     });
-    const documentType: string = "string";
-    const encodedPdf: EncodedPdf = {
-        document: "string",
-    };
-    const environment: Environment = Environment.Production;
+    const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-    const res = await sdk.document.extractDataJson(documentType, encodedPdf, environment);
+    const res = await sdk.results.retrieve(id);
 
     if (res.statusCode == 200) {
         // handle response
@@ -205,9 +184,43 @@ const httpClient = axios.create({
 
 const sdk = new Sensible({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `bearerAuth` | http         | HTTP Bearer  |
+
+To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+
+```typescript
+import { Sensible } from "@speakeasy-sdks/sensible";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+
+(async () => {
+    const sdk = new Sensible({
+        bearerAuth: "",
+    });
+    const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
+
+    const res = await sdk.results.retrieve(id);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

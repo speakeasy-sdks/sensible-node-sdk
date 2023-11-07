@@ -8,7 +8,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * Normalized metadata about the PDF, returned if available.
  */
-export class FileMetadataInfo extends SpeakeasyBase {
+export class Info extends SpeakeasyBase {
     /**
      * The name of the person who created the document.
      */
@@ -62,7 +62,7 @@ export class FileMetadataInfo extends SpeakeasyBase {
 /**
  * Raw metadata embedded in the PDF. Returned if available, without data normalization.
  */
-export class FileMetadataMetadata extends SpeakeasyBase {}
+export class Metadata extends SpeakeasyBase {}
 
 /**
  * Metadata about the PDF file, for example author, authoring tool, and modified date.
@@ -80,14 +80,14 @@ export class FileMetadata extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "info" })
-    @Type(() => FileMetadataInfo)
-    info?: FileMetadataInfo;
+    @Type(() => Info)
+    info?: Info;
 
     /**
      * Raw metadata embedded in the PDF. Returned if available, without data normalization.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    @Type(() => FileMetadataMetadata)
-    metadata?: FileMetadataMetadata;
+    @Type(() => Metadata)
+    metadata?: Metadata;
 }

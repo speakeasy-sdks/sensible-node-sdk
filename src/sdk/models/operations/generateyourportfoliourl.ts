@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -47,7 +47,31 @@ export class GenerateYourPortfolioUrlResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
+    fourHundredTextPlainBadRequest?: string;
+
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneTextPlainUnauthorized?: string;
+
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFifteenTextPlainUnsupportedMediaType?: string;
+
+    /**
+     * Too Many Requests
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyNineTextPlainUnsupportedMediaType?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundredTextPlainSensibleEncounteredAnUnknownError?: string;
 
     /**
      * HTTP response content type for this operation
@@ -62,12 +86,6 @@ export class GenerateYourPortfolioUrlResponse extends SpeakeasyBase {
     extractFromUrlPortfolioResponse?: shared.ExtractFromUrlPortfolioResponse;
 
     /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
-
-    /**
      * HTTP response status code for this operation
      */
     @SpeakeasyMetadata()
@@ -78,16 +96,4 @@ export class GenerateYourPortfolioUrlResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Not authorized
-     */
-    @SpeakeasyMetadata()
-    unauthorized?: string;
-
-    /**
-     * Unsupported Media Type
-     */
-    @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
 }

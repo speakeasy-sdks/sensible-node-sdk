@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -124,7 +124,7 @@ export class Portfolio {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = decodedRes;
+                    res.fourHundredTextPlainBadRequest = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -136,7 +136,7 @@ export class Portfolio {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = decodedRes;
+                    res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -146,9 +146,21 @@ export class Portfolio {
                     );
                 }
                 break;
-            case [415, 429].includes(httpRes?.status):
+            case httpRes?.status == 415:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case httpRes?.status == 429:
+                if (utils.matchContentType(contentType, `text/plain`)) {
+                    res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -160,7 +172,7 @@ export class Portfolio {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -270,7 +282,7 @@ export class Portfolio {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.badRequest = decodedRes;
+                    res.fourHundredTextPlainBadRequest = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -282,7 +294,7 @@ export class Portfolio {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unauthorized = decodedRes;
+                    res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -292,9 +304,21 @@ export class Portfolio {
                     );
                 }
                 break;
-            case [415, 429].includes(httpRes?.status):
+            case httpRes?.status == 415:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.unsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case httpRes?.status == 429:
+                if (utils.matchContentType(contentType, `text/plain`)) {
+                    res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -306,7 +330,7 @@ export class Portfolio {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(contentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,

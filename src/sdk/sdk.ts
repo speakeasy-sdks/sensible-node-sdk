@@ -3,8 +3,8 @@
  */
 
 import * as utils from "../internal/utils";
+import * as shared from "../sdk/models/shared";
 import { Document } from "./document";
-import * as shared from "./models/shared";
 import { Pdf } from "./pdf";
 import { Portfolio } from "./portfolio";
 import { Results } from "./results";
@@ -54,9 +54,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.0.0";
-    sdkVersion = "0.25.0";
-    genVersion = "2.173.0";
-    userAgent = "speakeasy-sdk/typescript 0.25.0 2.173.0 0.0.0 @speakeasy-sdks/sensible";
+    sdkVersion = "0.26.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 0.26.0 2.181.1 0.0.0 @speakeasy-sdks/sensible";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -68,21 +68,21 @@ export class SDKConfiguration {
  */
 export class Sensible {
     /**
+     * Retrieve an extraction
+     */
+    public results: Results;
+    /**
      * Extract data from a document
      */
     public document: Document;
-    /**
-     * Manage your SenseML configuration
-     */
-    public pdf: Pdf;
     /**
      * Manage your portfolio of documents
      */
     public portfolio: Portfolio;
     /**
-     * Retrieve an extraction
+     * Manage your SenseML configuration
      */
-    public results: Results;
+    public pdf: Pdf;
 
     private sdkConfiguration: SDKConfiguration;
 
@@ -103,9 +103,9 @@ export class Sensible {
             retryConfig: props?.retryConfig,
         });
 
-        this.document = new Document(this.sdkConfiguration);
-        this.pdf = new Pdf(this.sdkConfiguration);
-        this.portfolio = new Portfolio(this.sdkConfiguration);
         this.results = new Results(this.sdkConfiguration);
+        this.document = new Document(this.sdkConfiguration);
+        this.portfolio = new Portfolio(this.sdkConfiguration);
+        this.pdf = new Pdf(this.sdkConfiguration);
     }
 }

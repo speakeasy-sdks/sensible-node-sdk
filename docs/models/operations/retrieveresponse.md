@@ -12,4 +12,4 @@
 | `sensibleEncounteredAnUnknownError`                     | *string*                                                | :heavy_minus_sign:                                      | Internal Server Error                                   |
 | `unauthorized`                                          | *string*                                                | :heavy_minus_sign:                                      | Not authorized                                          |
 | `unsupportedMediaType`                                  | *string*                                                | :heavy_minus_sign:                                      | Unsupported Media Type                                  |
-| `retrieve200ApplicationJSONOneOf`                       | *any*                                                   | :heavy_minus_sign:                                      | Returns the extraction.                                 |
+| `oneOf`                                                 | *any*                                                   | :heavy_minus_sign:                                      | Returns the extraction.                                 |

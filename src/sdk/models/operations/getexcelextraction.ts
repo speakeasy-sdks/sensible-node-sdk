@@ -21,7 +21,7 @@ export class GetExcelExtractionRequest extends SpeakeasyBase {
  * expires after 15 minutes.
  *
  */
-export class GetExcelExtraction200ApplicationJSON extends SpeakeasyBase {
+export class GetExcelExtractionResponseBody extends SpeakeasyBase {
     /**
      * The download URL for the Excel file
      */
@@ -81,5 +81,5 @@ export class GetExcelExtractionResponse extends SpeakeasyBase {
      *
      */
     @SpeakeasyMetadata()
-    getExcelExtraction200ApplicationJSONObject?: GetExcelExtraction200ApplicationJSON;
+    object?: GetExcelExtractionResponseBody;
 }

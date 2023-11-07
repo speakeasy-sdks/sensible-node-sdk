@@ -1,5 +1,5 @@
 # Document
-(*document*)
+(*.document*)
 
 ## Overview
 
@@ -126,7 +126,7 @@ import { Environment } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
   const sdk = new Sensible({
     bearerAuth: "",
   });
-const requestBody: Uint8Array = "w\"7)qf*Zeg" as bytes <<<>>>;
+const requestBody: Uint8Array = new TextEncoder().encode("0xE051CA2dAA");
 const documentType: string = "string";
 const environment: Environment = Environment.Development;
 

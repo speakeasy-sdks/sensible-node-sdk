@@ -60,5 +60,5 @@ export class RetrieveResponse extends SpeakeasyBase {
      * Returns the extraction.
      */
     @SpeakeasyMetadata()
-    retrieve200ApplicationJSONOneOf?: any;
+    oneOf?: any;
 }

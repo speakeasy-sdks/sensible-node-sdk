@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -40,7 +40,31 @@ export class GenerateSensiblePortfolioUrlResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
+    fourHundredTextPlainBadRequest?: string;
+
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOneTextPlainUnauthorized?: string;
+
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFifteenTextPlainUnsupportedMediaType?: string;
+
+    /**
+     * Too Many Requests
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyNineTextPlainUnsupportedMediaType?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundredTextPlainSensibleEncounteredAnUnknownError?: string;
 
     /**
      * HTTP response content type for this operation
@@ -59,24 +83,6 @@ export class GenerateSensiblePortfolioUrlResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
-
-    /**
-     * Not authorized
-     */
-    @SpeakeasyMetadata()
-    unauthorized?: string;
-
-    /**
-     * Unsupported Media Type
-     */
-    @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
 
     /**
      * Returns the upload_url at which to PUT the document for extraction

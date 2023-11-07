@@ -21,7 +21,7 @@ export class GetCsvExtractionRequest extends SpeakeasyBase {
  * expires after 15 minutes.
  *
  */
-export class GetCsvExtraction200ApplicationJSON extends SpeakeasyBase {
+export class GetCsvExtractionResponseBody extends SpeakeasyBase {
     /**
      * The download URL for the CSV file
      */
@@ -81,5 +81,5 @@ export class GetCsvExtractionResponse extends SpeakeasyBase {
      *
      */
     @SpeakeasyMetadata()
-    getCsvExtraction200ApplicationJSONObject?: GetCsvExtraction200ApplicationJSON;
+    object?: GetCsvExtractionResponseBody;
 }

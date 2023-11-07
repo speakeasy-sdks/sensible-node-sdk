@@ -1,4 +1,4 @@
-# ValidationSeverity
+# Severity
 
 Severity of the failing validation (error, warning, skipped)
 

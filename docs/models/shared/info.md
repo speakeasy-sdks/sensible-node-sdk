@@ -1,4 +1,4 @@
-# FileMetadataInfo
+# Info
 
 Normalized metadata about the PDF, returned if available.
 

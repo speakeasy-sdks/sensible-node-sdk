@@ -1,4 +1,4 @@
-# GetExcelExtraction200ApplicationJSON
+# GetExcelExtractionResponseBody
 
 Indicates the extraction successfully converted to an Excel file. This response contains the download URL for the Excel file. The link
 expires after 15 minutes.
