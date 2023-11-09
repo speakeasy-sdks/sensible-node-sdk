@@ -49,7 +49,7 @@ export class Portfolio {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/generate_upload_url";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/generate_upload_url";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -85,7 +85,7 @@ export class Portfolio {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -207,7 +207,7 @@ export class Portfolio {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/extract_from_url";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/extract_from_url";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -243,7 +243,7 @@ export class Portfolio {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

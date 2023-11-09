@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: ebef4b39bbf5381d42a4154c3b95b0c3
   docVersion: 0.0.0
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: sensible
@@ -11,12 +11,12 @@ generation:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.1.0
+    core: 3.1.2
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 0.26.0
+  version: 0.26.1
   author: sensible
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
@@ -28,8 +28,10 @@ typescript:
       operations: sdk/models/operations
       shared: sdk/models/shared
       webhooks: sdk/models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/speakeasy-sdks/sensible-node-sdk
   maxMethodParams: 4
+  outputModelSuffix: output
   packageName: '@speakeasy-sdks/sensible'
   published: true
   repoSubDirectory: .

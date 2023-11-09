@@ -1,5 +1,5 @@
 # Pdf
-(*.pdf*)
+(*pdf*)
 
 ## Overview
 
@@ -28,7 +28,6 @@ const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
   const res = await sdk.pdf.getCsvExtraction(ids);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -45,8 +44,12 @@ const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
 ### Response
 
-**Promise<[operations.GetCsvExtractionResponse](../../models/operations/getcsvextractionresponse.md)>**
+**Promise<[operations.GetCsvExtractionResponse](../../sdk/models/operations/getcsvextractionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## getExcelExtraction
 
@@ -66,7 +69,6 @@ const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
   const res = await sdk.pdf.getExcelExtraction(ids);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -83,5 +85,9 @@ const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
 ### Response
 
-**Promise<[operations.GetExcelExtractionResponse](../../models/operations/getexcelextractionresponse.md)>**
+**Promise<[operations.GetExcelExtractionResponse](../../sdk/models/operations/getexcelextractionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

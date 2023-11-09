@@ -1,5 +1,5 @@
 # Results
-(*.results*)
+(*results*)
 
 ## Overview
 
@@ -27,7 +27,6 @@ const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
   const res = await sdk.results.retrieve(id);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -44,5 +43,9 @@ const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
 ### Response
 
-**Promise<[operations.RetrieveResponse](../../models/operations/retrieveresponse.md)>**
+**Promise<[operations.RetrieveResponse](../../sdk/models/operations/retrieveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

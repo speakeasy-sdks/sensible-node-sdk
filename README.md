@@ -66,23 +66,23 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
 ## Available Resources and Operations
 
 
-### [.results](docs/sdks/results/README.md)
+### [results](docs/sdks/results/README.md)
 
 * [retrieve](docs/sdks/results/README.md#retrieve) - Retrieve extraction
 
-### [.document](docs/sdks/document/README.md)
+### [document](docs/sdks/document/README.md)
 
 * [extractDataJson](docs/sdks/document/README.md#extractdatajson) - Extract data from a document
 * [extractDataRaw](docs/sdks/document/README.md#extractdataraw) - Extract data from a document
 * [generateUploadUrl](docs/sdks/document/README.md#generateuploadurl) - Extract doc at a Sensible URL
 * [provideDownloadUrl](docs/sdks/document/README.md#providedownloadurl) - Extract doc at your URL
 
-### [.portfolio](docs/sdks/portfolio/README.md)
+### [portfolio](docs/sdks/portfolio/README.md)
 
 * [generateSensiblePortfolioUrl](docs/sdks/portfolio/README.md#generatesensibleportfoliourl) - Extract portfolio at a Sensible URL
 * [generateYourPortfolioUrl](docs/sdks/portfolio/README.md#generateyourportfoliourl) - Extract portfolio at your URL
 
-### [.pdf](docs/sdks/pdf/README.md)
+### [pdf](docs/sdks/pdf/README.md)
 
 * [getCsvExtraction](docs/sdks/pdf/README.md#getcsvextraction) - Get CSV extraction
 * [getExcelExtraction](docs/sdks/pdf/README.md#getexcelextraction) - Get Excel extraction
@@ -99,7 +99,36 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
+
+
+## Example
+
+```typescript
+import { Sensible } from "@speakeasy-sdks/sensible";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
+
+(async () => {
+    const sdk = new Sensible({
+        bearerAuth: "",
+    });
+    const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
+
+    let res;
+    try {
+        res = await sdk.results.retrieve(id);
+    } catch (e) {}
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
 <!-- End Error Handling -->
 
 
@@ -189,12 +218,11 @@ const sdk = new Sensible({defaultClient: httpClient});
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security scheme globally:
+This SDK supports the following security scheme globally:
 
 | Name         | Type         | Scheme       |
 | ------------ | ------------ | ------------ |
