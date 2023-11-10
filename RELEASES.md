@@ -317,3 +317,13 @@ Based on:
 - [typescript v0.26.1] .
 ### Releases
 - [NPM v0.26.1] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.26.1 - .
+
+## 2023-11-10 00:40:01
+### Changes
+Based on:
+- OpenAPI Doc 0.0.0 
+- Speakeasy CLI 1.118.3 (2.187.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.26.2] .
+### Releases
+- [NPM v0.26.2] https://www.npmjs.com/package/@speakeasy-sdks/sensible/v/0.26.2 - .

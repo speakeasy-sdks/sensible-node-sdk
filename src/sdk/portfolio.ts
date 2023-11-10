@@ -93,7 +93,7 @@ export class Portfolio {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -102,20 +102,20 @@ export class Portfolio {
         const res: operations.GenerateSensiblePortfolioUrlResponse =
             new operations.GenerateSensiblePortfolioUrlResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.uploadPortfolioResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.UploadPortfolioResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -123,11 +123,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredTextPlainBadRequest = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -135,11 +135,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 401:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -147,11 +147,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 415:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -159,11 +159,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 429:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -171,11 +171,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -251,7 +251,7 @@ export class Portfolio {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -260,20 +260,20 @@ export class Portfolio {
         const res: operations.GenerateYourPortfolioUrlResponse =
             new operations.GenerateYourPortfolioUrlResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.extractFromUrlPortfolioResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ExtractFromUrlPortfolioResponse
                     );
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -281,11 +281,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 400:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredTextPlainBadRequest = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -293,11 +293,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 401:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -305,11 +305,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 415:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -317,11 +317,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 429:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -329,11 +329,11 @@ export class Portfolio {
                 }
                 break;
             case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `text/plain`)) {
+                if (utils.matchContentType(responseContentType, `text/plain`)) {
                     res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes

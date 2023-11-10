@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
