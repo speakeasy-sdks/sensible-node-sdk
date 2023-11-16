@@ -77,7 +77,7 @@ export class GenerateUploadUrlResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * Returns the upload_url at which to PUT the document for extraction
