@@ -53,7 +53,6 @@ src/sdk/models/shared/security.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
-USAGE.md
 docs/sdk/models/operations/retrieverequest.md
 docs/sdk/models/operations/retrieveresponse.md
 docs/sdk/models/operations/extractdatajsonrequest.md
@@ -103,4 +102,5 @@ docs/sdks/results/README.md
 docs/sdks/document/README.md
 docs/sdks/portfolio/README.md
 docs/sdks/pdf/README.md
+USAGE.md
 .gitattributes

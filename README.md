@@ -10,7 +10,7 @@
 
 [![Run on Repl.it](https://repl.it/badge/github/speakeasy-sdks/sensible-node-sdk)](https://replit.com/join/jtnwgbwhep-sagarbatchu1)
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -24,7 +24,7 @@ npm add @speakeasy-sdks/sensible
 ```bash
 yarn add @speakeasy-sdks/sensible
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Authentication: 
 
@@ -40,17 +40,18 @@ curl --request POST \
        --data-binary "@your_doc.pdf" \
 ```
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new Sensible({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -59,14 +60,15 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [results](docs/sdks/results/README.md)
 
@@ -88,17 +90,13 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
 
 * [getCsvExtraction](docs/sdks/pdf/README.md#getcsvextraction) - Get CSV extraction
 * [getExcelExtraction](docs/sdks/pdf/README.md#getexcelextraction) - Get Excel extraction
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -113,28 +111,35 @@ Example
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new Sensible({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
     let res;
     try {
         res = await sdk.results.retrieve(id);
-    } catch (e) {}
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
 
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -151,10 +156,10 @@ You can override the default server globally by passing a server index to the `s
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new Sensible({
         serverIdx: 0,
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -163,7 +168,9 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -175,10 +182,10 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new Sensible({
         serverURL: "https://api.sensible.so/v0",
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -187,23 +194,25 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from @speakeasy-sdks/sensible import Sensible;
-import axios;
+import { @speakeasy-sdks/sensible } from "Sensible";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -211,11 +220,11 @@ const httpClient = axios.create({
 
 const sdk = new Sensible({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -231,9 +240,9 @@ To authenticate with the API the `bearerAuth` parameter must be set when initial
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new Sensible({
-        bearerAuth: "",
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -242,10 +251,12 @@ import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operat
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

@@ -20,9 +20,9 @@ You can use this endpoint to get CSV files from PDF documents. In more detail, t
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GetCsvExtractionRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Sensible({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -31,7 +31,9 @@ const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -61,9 +63,9 @@ You can use this endpoint to get Excel files from PDF documents. In more detail,
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { GetExcelExtractionRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Sensible({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -72,7 +74,9 @@ const ids: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

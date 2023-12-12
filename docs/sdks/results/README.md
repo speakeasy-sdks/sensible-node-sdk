@@ -19,9 +19,9 @@ Use this endpoint in conjunction with asynchronous extraction requests to retrie
 import { Sensible } from "@speakeasy-sdks/sensible";
 import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Sensible({
-    bearerAuth: "",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
@@ -30,7 +30,9 @@ const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
