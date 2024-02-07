@@ -163,7 +163,7 @@ export class Document {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredTextPlainBadRequest = decodedRes;
+                    res.fourHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -175,7 +175,7 @@ export class Document {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
+                    res.fourHundredAndOne = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -187,7 +187,7 @@ export class Document {
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteen = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -199,7 +199,7 @@ export class Document {
                 break;
             case httpRes?.status == 429:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndTwentyNine = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -211,7 +211,7 @@ export class Document {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -350,7 +350,7 @@ export class Document {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredTextPlainBadRequest = decodedRes;
+                    res.fourHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -362,7 +362,7 @@ export class Document {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
+                    res.fourHundredAndOne = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -374,7 +374,7 @@ export class Document {
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteen = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -386,7 +386,7 @@ export class Document {
                 break;
             case httpRes?.status == 429:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndTwentyNine = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -398,7 +398,7 @@ export class Document {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -523,7 +523,7 @@ export class Document {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredTextPlainBadRequest = decodedRes;
+                    res.fourHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -535,7 +535,7 @@ export class Document {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
+                    res.fourHundredAndOne = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -547,7 +547,7 @@ export class Document {
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteen = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -559,7 +559,7 @@ export class Document {
                 break;
             case httpRes?.status == 429:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndTwentyNine = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -571,7 +571,7 @@ export class Document {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -691,7 +691,7 @@ export class Document {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredTextPlainBadRequest = decodedRes;
+                    res.fourHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -703,7 +703,7 @@ export class Document {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndOneTextPlainUnauthorized = decodedRes;
+                    res.fourHundredAndOne = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -715,7 +715,7 @@ export class Document {
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndFifteenTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteen = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -727,7 +727,7 @@ export class Document {
                 break;
             case httpRes?.status == 429:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fourHundredAndTwentyNineTextPlainUnsupportedMediaType = decodedRes;
+                    res.fourHundredAndTwentyNine = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -739,7 +739,7 @@ export class Document {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.fiveHundredTextPlainSensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,

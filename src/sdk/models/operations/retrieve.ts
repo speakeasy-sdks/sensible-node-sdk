@@ -18,7 +18,25 @@ export class RetrieveResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
+    fourHundred?: string;
+
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOne?: string;
+
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
 
     /**
      * HTTP response content type for this operation
@@ -37,24 +55,6 @@ export class RetrieveResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
-
-    /**
-     * Not authorized
-     */
-    @SpeakeasyMetadata()
-    unauthorized?: string;
-
-    /**
-     * Unsupported Media Type
-     */
-    @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
 
     /**
      * Returns the extraction.

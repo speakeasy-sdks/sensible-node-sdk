@@ -35,7 +35,25 @@ export class GetCsvExtractionResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
+    fourHundred?: string;
+
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOne?: string;
+
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
 
     /**
      * HTTP response content type for this operation
@@ -54,24 +72,6 @@ export class GetCsvExtractionResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
-
-    /**
-     * Not authorized
-     */
-    @SpeakeasyMetadata()
-    unauthorized?: string;
-
-    /**
-     * Unsupported Media Type
-     */
-    @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
 
     /**
      * Indicates the extraction successfully converted to an CSV file. This response contains the download URL for the CSV file. The link

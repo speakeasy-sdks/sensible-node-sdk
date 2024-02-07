@@ -105,7 +105,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.badRequest = decodedRes;
+                    res.fourHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -117,7 +117,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.unauthorized = decodedRes;
+                    res.fourHundredAndOne = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -129,7 +129,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.unsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteen = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -141,7 +141,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -233,7 +233,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.badRequest = decodedRes;
+                    res.fourHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -245,7 +245,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.unauthorized = decodedRes;
+                    res.fourHundredAndOne = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -257,7 +257,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 415:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.unsupportedMediaType = decodedRes;
+                    res.fourHundredAndFifteen = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -269,7 +269,7 @@ export class Pdf {
                 break;
             case httpRes?.status == 500:
                 if (utils.matchContentType(responseContentType, `text/plain`)) {
-                    res.sensibleEncounteredAnUnknownError = decodedRes;
+                    res.fiveHundred = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + responseContentType,

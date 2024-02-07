@@ -35,31 +35,31 @@ export class ExtractDataRawResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    fourHundredTextPlainBadRequest?: string;
+    fourHundred?: string;
 
     /**
      * Not authorized
      */
     @SpeakeasyMetadata()
-    fourHundredAndOneTextPlainUnauthorized?: string;
+    fourHundredAndOne?: string;
 
     /**
      * Unsupported Media Type
      */
     @SpeakeasyMetadata()
-    fourHundredAndFifteenTextPlainUnsupportedMediaType?: string;
+    fourHundredAndFifteen?: string;
 
     /**
      * Too Many Requests
      */
     @SpeakeasyMetadata()
-    fourHundredAndTwentyNineTextPlainUnsupportedMediaType?: string;
+    fourHundredAndTwentyNine?: string;
 
     /**
      * Internal Server Error
      */
     @SpeakeasyMetadata()
-    fiveHundredTextPlainSensibleEncounteredAnUnknownError?: string;
+    fiveHundred?: string;
 
     /**
      * HTTP response content type for this operation
