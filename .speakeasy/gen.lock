@@ -4,7 +4,7 @@ management:
   docChecksum: ebef4b39bbf5381d42a4154c3b95b0c3
   docVersion: 0.0.0
   speakeasyVersion: internal
-  generationVersion: 2.250.12
+  generationVersion: 2.253.0
   releaseVersion: 0.28.0
   configChecksum: f68f3a0c51f0dce6fe9276f30a533aae
   repoURL: https://github.com/speakeasy-sdks/sensible-node-sdk.git
