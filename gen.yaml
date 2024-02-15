@@ -8,7 +8,7 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 typescript:
-  version: 0.28.0
+  version: 0.28.1
   author: sensible
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true

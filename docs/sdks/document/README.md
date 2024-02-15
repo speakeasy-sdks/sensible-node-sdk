@@ -54,9 +54,9 @@ async function run() {
   const sdk = new Sensible({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const documentType: string = "string";
+const documentType: string = "<value>";
 const encodedPdf: EncodedPdf = {
-  document: "string",
+  document: "<value>",
 };
 const environment: Environment = Environment.Production;
 
@@ -132,7 +132,7 @@ async function run() {
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const requestBody: Uint8Array = new TextEncoder().encode("0xE051CA2dAA");
-const documentType: string = "string";
+const documentType: string = "<value>";
 const environment: Environment = Environment.Development;
 
   const res = await sdk.document.extractDataRaw(requestBody, documentType, environment);
@@ -185,7 +185,7 @@ async function run() {
   const sdk = new Sensible({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const documentType: string = "string";
+const documentType: string = "<value>";
 const generateUrlRequest: GenerateUrlRequest = {
   webhook: {
     payload: "info extra to the default extraction payload",
@@ -238,7 +238,7 @@ async function run() {
   const sdk = new Sensible({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const documentType: string = "string";
+const documentType: string = "<value>";
 const extractFromUrlRequest: ExtractFromUrlRequest = {
   documentUrl: "https://github.com/sensible-hq/sensible-docs/raw/main/readme-sync/assets/v0/pdfs/auto_insurance_anyco.pdf",
   webhook: {

@@ -4,9 +4,9 @@ management:
   docChecksum: ebef4b39bbf5381d42a4154c3b95b0c3
   docVersion: 0.0.0
   speakeasyVersion: internal
-  generationVersion: 2.253.0
-  releaseVersion: 0.28.0
-  configChecksum: f68f3a0c51f0dce6fe9276f30a533aae
+  generationVersion: 2.258.0
+  releaseVersion: 0.28.1
+  configChecksum: 41245e7aea7537ddbee0f844119429b1
   repoURL: https://github.com/speakeasy-sdks/sensible-node-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/sensible-node-sdk
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.4.6
+    core: 3.4.7
     flattening: 2.81.1
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
