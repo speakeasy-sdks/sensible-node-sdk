@@ -21,7 +21,7 @@ export class GetExcelExtractionRequest extends SpeakeasyBase {
  * expires after 15 minutes.
  *
  */
-export class GetExcelExtraction200ApplicationJSON extends SpeakeasyBase {
+export class GetExcelExtractionResponseBody extends SpeakeasyBase {
     /**
      * The download URL for the Excel file
      */
@@ -35,34 +35,43 @@ export class GetExcelExtractionResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
-
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
+    fourHundred?: string;
 
     /**
      * Not authorized
      */
     @SpeakeasyMetadata()
-    unauthorized?: string;
+    fourHundredAndOne?: string;
 
     /**
      * Unsupported Media Type
      */
     @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 
     /**
      * Indicates the extraction successfully converted to an Excel file. This response contains the download URL for the Excel file. The link
@@ -72,5 +81,5 @@ export class GetExcelExtractionResponse extends SpeakeasyBase {
      *
      */
     @SpeakeasyMetadata()
-    getExcelExtraction200ApplicationJSONObject?: GetExcelExtraction200ApplicationJSON;
+    object?: GetExcelExtractionResponseBody;
 }

@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ExtractionStatus } from "./extractionstatus";
 import { Expose, Transform } from "class-transformer";
 
-/**
- * Returns the upload_url at which to PUT the document for extraction
- */
 export class UploadPortfolioResponse extends SpeakeasyBase {
     /**
      * Date and time Sensible created the extraction

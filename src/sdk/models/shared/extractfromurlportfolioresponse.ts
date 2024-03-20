@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ExtractionStatus } from "./extractionstatus";
 import { Expose, Transform } from "class-transformer";
 
-/**
- * Returns the ID to use to retrieve the extraction.
- */
 export class ExtractFromUrlPortfolioResponse extends SpeakeasyBase {
     /**
      * Date and time Sensible created the extraction

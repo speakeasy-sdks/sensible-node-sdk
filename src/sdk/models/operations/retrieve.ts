@@ -18,38 +18,47 @@ export class RetrieveResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
-
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
+    fourHundred?: string;
 
     /**
      * Not authorized
      */
     @SpeakeasyMetadata()
-    unauthorized?: string;
+    fourHundredAndOne?: string;
 
     /**
      * Unsupported Media Type
      */
     @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 
     /**
      * Returns the extraction.
      */
     @SpeakeasyMetadata()
-    retrieve200ApplicationJSONOneOf?: any;
+    oneOf?: any;
 }

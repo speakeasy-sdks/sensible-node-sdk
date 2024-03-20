@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class ExtractDataJsonRequest extends SpeakeasyBase {
@@ -35,8 +35,35 @@ export class ExtractDataJsonResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
+    fourHundred?: string;
 
+    /**
+     * Not authorized
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndOne?: string;
+
+    /**
+     * Unsupported Media Type
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Too Many Requests
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyNine?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
+
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
@@ -50,26 +77,14 @@ export class ExtractDataJsonResponse extends SpeakeasyBase {
     extractionSingleResponse?: shared.ExtractionSingleResponse;
 
     /**
-     * Internal Server Error
+     * HTTP response status code for this operation
      */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
-
     @SpeakeasyMetadata()
     statusCode: number;
 
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
     /**
-     * Not authorized
+     * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    unauthorized?: string;
-
-    /**
-     * Unsupported Media Type
-     */
-    @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
+    rawResponse: AxiosResponse;
 }

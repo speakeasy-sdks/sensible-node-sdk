@@ -1,21 +1,22 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { Sensible } from "@speakeasy-sdks/sensible";
-import { ExtractDataJsonResponse } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
-import { Environment, ExtractionStatus, ValidationSeverity } from "@speakeasy-sdks/sensible/dist/sdk/models/shared";
+import { RetrieveRequest } from "@speakeasy-sdks/sensible/dist/sdk/models/operations";
 
-const sdk = new Sensible({
-  security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
-  },
-});
+async function run() {
+    const sdk = new Sensible({
+        bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    });
+    const id: string = "246a6f60-0e5b-11eb-b720-295a6fba723e";
 
-sdk.document.extractDataJson("corrupti", {
-  document: "provident",
-}, Environment.Development).then((res: ExtractDataJsonResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
+    const res = await sdk.results.retrieve(id);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

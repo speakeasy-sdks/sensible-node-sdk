@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class GenerateUploadUrlRequest extends SpeakeasyBase {
@@ -35,34 +35,49 @@ export class GenerateUploadUrlResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
-
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
+    fourHundred?: string;
 
     /**
      * Not authorized
      */
     @SpeakeasyMetadata()
-    unauthorized?: string;
+    fourHundredAndOne?: string;
 
     /**
      * Unsupported Media Type
      */
     @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Too Many Requests
+     */
+    @SpeakeasyMetadata()
+    fourHundredAndTwentyNine?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 
     /**
      * Returns the upload_url at which to PUT the document for extraction

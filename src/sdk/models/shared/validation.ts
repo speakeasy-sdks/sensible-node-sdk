@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * Severity of the failing validation (error, warning, skipped)
  */
-export enum ValidationSeverity {
+export enum Severity {
     Error = "error",
     Warning = "warning",
     Skipped = "skipped",
@@ -34,5 +34,5 @@ export class Validation extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "severity" })
-    severity?: ValidationSeverity;
+    severity?: Severity;
 }

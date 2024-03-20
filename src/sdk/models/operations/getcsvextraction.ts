@@ -21,7 +21,7 @@ export class GetCsvExtractionRequest extends SpeakeasyBase {
  * expires after 15 minutes.
  *
  */
-export class GetCsvExtraction200ApplicationJSON extends SpeakeasyBase {
+export class GetCsvExtractionResponseBody extends SpeakeasyBase {
     /**
      * The download URL for the CSV file
      */
@@ -35,34 +35,43 @@ export class GetCsvExtractionResponse extends SpeakeasyBase {
      * Bad Request
      */
     @SpeakeasyMetadata()
-    badRequest?: string;
-
-    @SpeakeasyMetadata()
-    contentType: string;
-
-    @SpeakeasyMetadata()
-    statusCode: number;
-
-    @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
-
-    /**
-     * Internal Server Error
-     */
-    @SpeakeasyMetadata()
-    sensibleEncounteredAnUnknownError?: string;
+    fourHundred?: string;
 
     /**
      * Not authorized
      */
     @SpeakeasyMetadata()
-    unauthorized?: string;
+    fourHundredAndOne?: string;
 
     /**
      * Unsupported Media Type
      */
     @SpeakeasyMetadata()
-    unsupportedMediaType?: string;
+    fourHundredAndFifteen?: string;
+
+    /**
+     * Internal Server Error
+     */
+    @SpeakeasyMetadata()
+    fiveHundred?: string;
+
+    /**
+     * HTTP response content type for this operation
+     */
+    @SpeakeasyMetadata()
+    contentType: string;
+
+    /**
+     * HTTP response status code for this operation
+     */
+    @SpeakeasyMetadata()
+    statusCode: number;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
+    @SpeakeasyMetadata()
+    rawResponse: AxiosResponse;
 
     /**
      * Indicates the extraction successfully converted to an CSV file. This response contains the download URL for the CSV file. The link
@@ -72,5 +81,5 @@ export class GetCsvExtractionResponse extends SpeakeasyBase {
      *
      */
     @SpeakeasyMetadata()
-    getCsvExtraction200ApplicationJSONObject?: GetCsvExtraction200ApplicationJSON;
+    object?: GetCsvExtractionResponseBody;
 }
