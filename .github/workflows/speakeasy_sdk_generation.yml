@@ -17,7 +17,8 @@ jobs:
     with:
       create_release: true
       force: ${{ github.event.inputs.force }}
-      languages: '- typescript'
+      languages: |
+        - typescript
       mode: pr
       openapi_docs: |
         - ./sensible.yml
